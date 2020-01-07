@@ -1,0 +1,3166 @@
+
+% ----------------------------------------------------------------
+% Book Class (This is a LaTeX2e document)  ***********************
+% ----------------------------------------------------------------
+\documentclass[openany,10pt]{book}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{txfonts}
+\usepackage{float}
+\usepackage{mathrsfs}
+\theoremstyle{definition}
+
+% THEOREMS -------------------------------------------------------
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+\newcommand{\be}{\begin{eqnarray}}
+
+\newcommand{\ee}{\end{eqnarray}}
+% ----------------------------------------------------------------
+\begin{document}
+\begin{titlepage}
+	\centering{\scshape\LARGE Southern University of Science and Technology\\}
+	\vspace{1.5cm}
+	{\Huge \bfseries Brief Lecture Notes \\on General Relativity \par}
+	\vspace{1cm}
+\includegraphics[width=0.8\textwidth]{0.jpg}\par\vspace{2cm}
+	Lecturer\par
+    {\Large\itshape Leonardo Modesto\footnote{\textit{Department of Physics. 120, Research Buiding 2}. lmodesto@sustc.edu.cn}\par}
+	\vfill
+	Arranged and typed by TAs serving in 2018 and 2019\par
+	Jerry J.-\textsc{y} \textsc{Zhang}\footnote{skycattmll@gmail.com}
+\par
+	Jacquelyn H.-\textsc{y} \textsc{Zhu}\footnote{jacquelynzhy@gmail.com}
+
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+\newpage
+{\centering
+\
+\\
+\
+\\
+\
+\\
+\ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\
+\Large{
+\textsc{\bfseries Disclaimer}}\\
+\
+\\
+
+\large{This note doesn't cover all the information in Leonardo's lectures. You should refer to origin note, text book and Leonardo more often than this note. There might be mistakes due to our ignorance and carelessness, we will appreciate if you tell us after debugging. }}
+
+\clearpage
+\tableofcontents\vfill\footnote{Chapter with an asterisk `*' is optional.}
+
+
+
+\part[Preliminaries and Special Relativity]{Preliminaries and\\ Special Relativity}
+
+\chapter[A Classical Perspective]{A Classical Perspective\footnote{Our main reference book is Landau and Lifshitz's \textit{The Classical Theory of Fields}.}}\label{pre} 
+
+Since you are going to learn General Relativity, what is Relativity? Please Wiki it!
+
+\section{Classical Mechanics}
+As you saw in Analytical Mechanics, a point pariticle's {\bfseries Lagrangian} is $L(q,\dot q,t)$, and the \textbf{Action} is $S=\int^{t_2}_{t_1}L {\rm d}t $.
+By the Least Action Principle: $\delta S=0$, we get the Euler-Lagrange Equation for a system whose degree of freedom is $s$\footnote{The derivation of Euler-Lagrangian Equation and its properties could be found in Landau and Lifshitz's \textit{Mechanics}.}:
+
+\begin{equation}\label{1}
+\boxed{\frac{\partial L}{\partial q_i}-\frac{\rm{d}}{{\rm d}t}\frac{\partial L}{\partial \dot q_i}=0},\ i=1,2,...,s.
+\end{equation}
+The Lagrangian $L=T-U=\sum_i \frac12 mv_i^2-U(r_1,r_2, \dots ,r_i)$, by Euler-Lagrange Equation, we can get \textbf{EOM}(Equation Of Motion):
+\begin{equation}
+m_i \frac{{\rm d}v_i}{{\rm d}t}=-\frac{\partial U}{\partial r_i}=F_i.
+\end{equation}
+
+
+\section{Galileo's Relativity Principle}
+\subsection{In Inertial Frame}
+If the physics of a reference system $K$ have no causes external to the reference system (simply no external forces is applied on $K$, the explination could be found in the next subsection \ref{noniner}), we call $K$ is {\bfseries Inertial}. If there's another reference systems $K'$, and $K'$ has a {\bfseries constant} velocity $V$ respect to $K$.
+
+\begin{figure}[htbp]
+
+  \centering
+    \includegraphics[width=0.85\textwidth]{1.jpg}
+ \caption{Motion in inertial frames}
+\end{figure}
+
+{\bfseries Galileo's Relativity Principle} tells us the Law of Mechanics doesn't change under the following transformation:
+\begin{equation}\label{Gali}
+\boxed{
+\begin{aligned}
+&\vec r=\vec {r'}+\vec V t\\
+&t=t'.
+\end{aligned}}
+\end{equation}
+
+
+\begin{proof}
+
+Consider a free particle $L(v^2)=\frac12mv^2$ in $K$. Take the derivation the first equation of equation \ref{Gali} we get $\dot {\vec r}=\dot {\vec {r'}}+\vec V$, it is $\vec v=\vec {v'} + \vec V$. In $K'$, because $\frac{{\rm d}\vec V}{{\rm d}t}=0$, we get
+\begin{equation}
+\begin{aligned}
+L(v'^2)&=\frac12 m \left(v^2+V^2-2\vec v\cdot \vec V\right)\\
+&=\frac12mv^2+\underbrace{\frac{\rm {d}}{{\rm d}t}\left(\frac12m V^2 t\right)-\frac{\rm {d}}{{\rm d}t}\left(m \vec r\cdot \vec V\right)}_{total \ derivative \ of \ a \ function}\\
+&\simeq \frac12 mv^2\\
+&= L(v^2).
+\end{aligned}
+\end{equation}
+which means the \textbf{invariance} of the mechanics law, or $K'$ is inertial too. Because a total derivative of a function can be neglected in a Lagrangian. 
+\end{proof}
+
+Cheking the EOMs derived from the Euler-Lagrangian Equation in $K$ and $K'$:
+\begin{equation}
+    m\frac{{\rm d}\vec{v}}{{\rm d}t}=m\frac{{\rm d}\vec{v'}}{{\rm d}t}=0,
+\end{equation}
+which indicate the particle is doing a uniform motion in both frames.
+
+A conclusion can be drawn that every reference frame has a constant velocity respect to an inertial frame is inertial. \\
+Galilean invariance or Galilean relativity states that the laws of motion are the same in all \textbf{inertial frames}. Galileo Galilei first described this principle in 1632.
+
+Our mother nature doesn't have the prejudice on a special coordinates system. In fact, the coordinates is created by our humans. So the nature of physics law should not be influenced by the coordinates choosing too.
+
+\subsection{In Non-inertial Frame}\label{noniner}
+ If the reference systems $K'$ has a {\bfseries non-constant} velocity $V(t)$ respect to $K$, in other words, $K'$ is accelerating respect to $K$. We have $\vec v=\vec {v'} + \vec V(t)$.
+ 
+ \begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.85\textwidth]{9.jpg}
+ \caption{Motion in Non-inertial frame}
+\end{figure}
+
+ Now in $K$, without the loss of generality, we add a potential $U$ in particle's Lagrangian, which means that the particle is influenced by an internal conservative force $\vec F$: $L(v^2)=\frac12 mv^2-U$. Generally, the potential is not the function of velocity $\vec v$.\\
+ In $K'$, the Lagrangian is  
+ \begin{equation}
+\begin{aligned}
+L(v'^2)&=\frac12 m \left(v^2+V(t)^2-2\vec v\cdot \vec V(t)\right)-U\\
+&=\frac12mv^2+\underbrace{\frac12mV(t)^2}_{total \ derivative}-\left[\underbrace{\frac{\rm d}{{\rm d}t}\left(m \vec r\cdot \vec V\right)}_{total \ derivative}-m\frac{{\rm d}\vec{V}(t)}{{\rm d}t}\cdot \vec r\right]-U\\
+&\simeq \frac12mv^2+m\frac{{\rm d}\vec{V}(t)}{{\rm d}t}\cdot \vec r-U\\
+&=L(v^2)+m\frac{{\rm d}\vec{V}(t)}{{\rm d}t}\cdot \vec r-U.
+\end{aligned}
+\end{equation}
+
+Using the Euler-Lagrangian Equation we obtain the EOM:
+\begin{equation}
+    m\frac{{\rm d}\vec{v'}}{{\rm d}t}=\underbrace{-\frac{\partial U}{\partial \vec{r'}}}_{\vec F}+\underbrace{m\frac{{\rm d}\vec{V}(t)}{{\rm d}t}}_{\vec{F}_{K'}}.
+\end{equation}
+We see there is a force $\vec F_{K'}$ imposed on the particle at any point in the non-inertial frame $K'$.
+
+\subsection{Electromagnetic Field}
+The discussion above is based on Newtonian Mechanics. You may have learned that Electromagnetism breaks the Galileo’s Relativity Principle. Try to apply Galileo’s Transformation on the Maxwell Equations and see the results.\\
+In the end of 19th century, the correctness of classical electromagnetism theory was verified by many experiments. People tried to create `Aether' to explain the incompatibility but was proved wrong by Michelson-Morley Experiment. In the same time, {\bfseries vacuum speed of light} $c$ is tested as a constant, which strongly subvert the Galileo’s Relativity Principle.\\
+We should set a new physical system.
+
+
+\chapter{When things move fast ------ Special Relativity}
+\section{Special Relativity Principle}
+Just like Galileo's Relativity Principle, we have constraint condition in Special Relativity Principle, two simple assumptions constructed based on experimental evidence, although they are counter-intuitive:
+\begin{itemize}
+    \item $c=const$, in any {\bfseries inertial } reference frame;
+    \item All physical laws are\ the same in any  {\bfseries inertial} reference frame.
+\end{itemize}
+
+
+Refer to any reference book if you want to know why Einstein proposed this. Let's find out something interesting by using this principle.
+
+\section{Event and Interval}
+
+There are 2 Events $E_1$ and $E_2$ in 2 reference frames $K$ and $K'$. In $K$, $E_1$ is the event that the light signal $\gamma$ (photon) departs from ${x_1,y_1,z_1}$ at time $t_1$, and $E_2$ is the event that the light signal $\gamma$ gets to ${x_2,y_2,z_2}$ at time $t_2$.\\
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.85\textwidth]{8.jpg}
+ \caption{Events in 2 frames}
+\end{figure}
+
+Now, in $K$, we have the relationship:
+\begin{equation}
+(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2=c^2(t_2-t_1)^2.
+\end{equation}
+And in $K'$, according to the assumption, we know the speed of light is also $c$,
+\begin{equation}
+(x'_2-x'_1)^2+(y'_2-y'_1)^2+(z'_2-z'_1)^2=c^2(t'_2-t'_1)^2.
+\end{equation}
+
+\noindent\rule{\textwidth}{0.3mm}
+\rem You can write it simply:
+\begin{equation}
+\Delta \vec{x_i} \delta_{ij} \Delta \vec{x_j}=c^2\Delta t^2.
+\end{equation}
+And in  matrix form, the square of Euclidean Distance is
+\begin{equation}
+  (\vec{x_1}-\vec{x_2})(\vec{x_1}-\vec{x_2})=
+    \begin{pmatrix}
+   x_1-x_2 & y_1-y_2 & z_1-z_2
+  \end{pmatrix}
+  \begin{pmatrix}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+   x_1-x_2 \\
+   y_1-y_2 \\
+   z_1-z_2
+  \end{pmatrix}.
+\end{equation}
+You will use matrix form often later. The matrix in between is called Metric. Here is 3-D Euclidean Metric $  \begin{pmatrix}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1
+  \end{pmatrix} $.
+
+\noindent\rule{\textwidth}{0.3mm}
+
+Now we generally define the Interval:
+ \defn{The {\bfseries Interval} of any two Events is\footnote{the signs of 4 items in Interval$(+,+,+,-)$ are totally opposed to the description in Landau's $(-,-,-,+)$, but it doesn't matter.}:
+\begin{equation}
+s_{12}=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2-c^2(t_2-t_1)^2}.
+\end{equation}}
+Obviously,the Interval of $E_1$ and $E_2$ in 2 reference frames $K$ and $K'$ are both $0$. 
+
+We can draw the conclusion that if the Interval is $0$ in one frame that it will also be $0$ in any other frame because of the invariance of the light speed. And for the propagating of light, the Interval is always $0$.
+
+The Infinitesimal Interval is
+\begin{equation}\boxed{
+{\rm d} s^2=-c^2{\rm d} t^2+{\rm d} x^2+{\rm d} y^2+{\rm d} z^2.}
+\end{equation}
+More precisely, this is the Infinitesimal Interval in flat space-time(the Minkovski space) which will be frequently mentioned in Part III. The signature is $(-,+,+,+)$ in this note. The opposite signature $(+,-,-,-)$ is assumed by some people (e.g. Landau), which does not influence the physical fact but you need to be careful during some calculation processes.
+
+\noindent\rule{\textwidth}{0.3mm}
+\rem And in {\bfseries matrix form} and using Einstein notation\footnote{Without using Einstein notation, the front vector should be written transposed, ${\rm d}s^2=\vec x^T \eta \vec x$.},
+\begin{equation}\label{eta}\begin{aligned}
+  {\rm d}s^2&=
+    \begin{pmatrix}
+   c{\rm d}t & {\rm d}y & {\rm d}z & {\rm d}x
+  \end{pmatrix}
+  \begin{pmatrix}
+   -1 & 0 & 0 & 0\\
+   0 & 1 & 0 & 0\\
+   0 & 0 & 1 & 0\\
+   0 &0 & 0& 1
+  \end{pmatrix}
+  \begin{pmatrix}
+   c{\rm d}t\\
+  {\rm d}y \\
+   {\rm d}z\\
+   {\rm d}x
+  \end{pmatrix}\\
+  &=\eta_{\mu \nu}{\rm d}x^{\mu}{\rm d}x^{\nu}\\
+&={\rm d}x_{\nu}{\rm d}x^{\nu}.
+\end{aligned}
+\end{equation}
+The vector ${\rm d}x^{\nu}$ is called 4-D vector. The matrix $\begin{pmatrix}
+   -1& 0 & 0 & 0\\
+   0 & 1 & 0 & 0\\
+   0 & 0 & 1 & 0\\
+   0 &0 & 0& 1
+  \end{pmatrix}$ is so-called Minkowski Metric $\eta_{\mu \nu}$. $\eta_{\mu \nu}$ is diagonal.
+
+Any non-singular(non-degenerate) matrix has an inverse matrix, so does the Minkowsi Metric matrix $\eta_{\mu \nu}$. The inverse $\eta^{\mu \nu}$ which could be obtained by the reciprocal relationship
+\begin{equation}
+    \eta_{\mu \nu}\eta^{ \nu\rho}=\delta^\rho_\mu=\begin{pmatrix}
+   1& 0 & 0 & 0\\
+   0 & 1 & 0 & 0\\
+   0 & 0 & 1 & 0\\
+   0 &0 & 0& 1
+  \end{pmatrix},
+\end{equation}
+we find that they are actually the same:
+\begin{equation}
+    \eta_{\mu \nu}=\eta^{\mu \nu}=\begin{pmatrix}
+   -1& 0 & 0 & 0\\
+   0 & 1 & 0 & 0\\
+   0 & 0 & 1 & 0\\
+   0 &0 & 0& 1
+  \end{pmatrix}.
+\end{equation}
+
+As you see in Equation \ref{eta},  the Minkowsi Metric can `pull down' and change the indices of a vector. In the contrary, its reciprocal can `pull up' and change the indices\footnote{The reason is about covariant and contravariant vectors that you only need to be familiar with the operation so far. $A_0=-A^0$ and $A_i=A^i$, $i=1,2,3$. You can also refer to the Appendix and Landau's \textit{The Classical Theory of Fields} \S6 Equation (6.2) $\sim$ (6.6).}:
+\begin{equation}
+    \eta^{\mu\nu}A_\nu=A^\mu;\ \eta_{\mu\nu}A^\nu=A_\mu.
+\end{equation}
+\rule{\textwidth}{0.3mm}
+
+Because ${\rm d}s$ is a infinitesimal of the same order as ${\rm d}s'$, which means
+\begin{equation}
+{\rm d}s^2=a {\rm d}s'^2.
+\end{equation}
+We can proof that $a=1$. Please note that $a$ does not related to $t,x,y,z$  because the spatial uniformity, then $a$ is only related to the relative velocity of two coordinate. For example, there are three coordinate $K_1, K_2$ and $K$. The relative velocity of  $K_1, K_2$ to $K$ is $\vec{v_1}$ and $\vec{v_2}$, and the relative velocity between $K_1$ and $K_2$ is $\vec{v_{12}}$. Then we can say 
+\begin{equation}
+\begin{aligned}
+{\rm{d}}s^2&=a(\vec{v_1}){\rm{d}}s_1^2\\
+{\rm{d}}s^2&=a(\vec{v_2}){\rm{d}}s_2^2\\
+{\rm{d}}s_1^2&=a(\vec{v_{12}}){\rm{d}}s_2^2.
+\end{aligned}
+\end{equation}
+Then it is not difficult to get the relationship 
+\begin{equation}
+\frac{a(\vec{v_1})}{a(\vec{v_2})}=a(\vec{v_{12}}).
+\end{equation}
+Since $v_{12}$ is related to both the amplitude of $\vec{v_1}$ and $\vec{v_2}$, and the angle between $\vec{v_1}$ and $\vec{v_2}$. The only way to make the equation always correct is that $a$ is also not related to the relative velocity between the coordinate, and it is a constant. From the equation above we can get that 
+\begin{equation}
+a(\vec{v_1})=a(\vec{v_2})=a(\vec{v_{12}})=1.
+\end{equation}
+That is 
+\begin{equation}
+\boxed{{\rm{d}}s^2={\rm{d}}s'^2.}
+\end{equation}
+It is also the mathematical representation of the immutability of the speed of light. 
+
+
+\section{Lorentz Transformation}
+
+ Lorentz Transformation is an isometry which preserves the interval.  Here comes the Lorentz transformation of a 4-D vector $x'^\alpha=\Lambda^\alpha_\beta x^\beta$ and because $\Lambda^\alpha_\beta$ has constant components, the infinitesimal quantities transform like this: ${\rm d}x'^\alpha=\Lambda^\alpha_\beta {\rm d}x^\beta$. The components will be shown in the subsection \ref{hyperbolic}.\\
+ The Interval has property of invariance:
+\begin{equation}\begin{aligned}\label{invmetrictrans}
+ {\rm d}s'^2&=\eta_{\gamma \delta}{\rm d}x'^{\gamma}{\rm d}x'^{\delta}\\
+&=\eta_{\gamma \delta}\left(\Lambda^\gamma_\mu{\rm d}x^{\mu}\right)\left(\Lambda^\delta_\nu{\rm d}x^{\nu}\right)\\
+&=\eta_{\gamma \delta}\Lambda^\gamma_\mu\Lambda^\delta{\rm d}x^{\mu}{\rm d}x^{\nu}\\
+&=\eta_{\mu \nu}{\rm d}x^{\mu}{\rm d}x^{\nu}={\rm d}s^2.\\
+\end{aligned}
+\end{equation}
+$\eta_{\gamma \delta}$ has the same form as $\eta_{\mu\nu}$ which is Minkowski metric.\\
+So the Minkowski metric transforms in the following way:
+\begin{equation}\begin{aligned}
+\eta_{\mu \nu}&=\eta_{\gamma \delta}\Lambda^\gamma_\mu \Lambda^\delta_\nu,
+\end{aligned}
+\end{equation}
+or simplified not using the Einstein notation\footnote{Like Equation \ref{eta}, Equation \ref{invmetrictrans} can be written in the normal form  ${\rm d}s'^2=\left(\Lambda \vec x\right)^T\eta\Lambda\vec x$.}:
+\begin{equation}
+\eta=\Lambda^T\eta\Lambda.
+\end{equation}
+
+\subsection{How the time change}
+Suppose a particle is moving only on $x$ axis with a velocity $\frac{{\rm d}x}{{\rm d}t}$ respective to the laboratory reference frame $K$ and totally rest in another reference frame $K'$ followed the particle tightly.
+
+From Interval invariant, we can have:
+\begin{equation}
+-c^2 {\rm d} t^2+{\rm d} x^2=-c^2{\rm d} t'^2+{\rm d} x'^2
+\end{equation}
+\begin{equation}
+c^2{\rm d} t^2(1-\frac{{\rm d}x^2}{c^2 {\rm d}t^2})=c^2{\rm d}t'^2(1-\frac{{\rm d}x'^2}{c^2{\rm d}t'^2})
+\end{equation}
+Where $\frac{{\rm d}x'^2}{c^2{\rm d}t'^2}=0$, so that we have:
+\begin{equation}\boxed{
+\Delta t=\frac{\Delta t'}{\sqrt{1-\frac{{\rm d}x'^2}{c^2{\rm d}t'^2}}}=\gamma \Delta t'>\Delta t.}
+\end{equation}
+which is Lorentz Transformation of time. $\Delta t'$ is the time interval of the particle measured by a clock set on the particle. $t'$ is so-called {\bfseries Proper time} and often be marked as ${\rm d}\tau$.  You can see time elapses slower on a train pass through before you if it's velocity is significant close to the speed of light. That's also why scientist always observe high energy particles from the cosmic rays lives longer than its average life. 
+
+
+Counter-intuitively, If you set $K'$ to be at rest and $K$ to move in opposite direction, you will find $\Delta t'<\Delta t$. 
+
+We will call the factor $\frac1{\sqrt{1-\frac{v^2}{c^2}}}$ as {\bfseries Lorentz factor} $\gamma$ later. $\gamma$ increases to the infinity when velocity approaches to the light speed $c$.
+Here comes some interesting phenomenon like twins orthodox (You can search it in wikipedia).\\
+Generally, the square of infinitesimal proper time is 
+\begin{equation}
+    {\rm d} \tau^2={\rm d} t^2-\frac{1}{c^2}{\rm d} x^2-\frac{1}{c^2}{\rm d} y^2-\frac{1}{c^2}{\rm d} z^2=-\frac{1}{c^2}{\rm d}s^2.
+\end{equation}
+When some books adopt opposite signature $(+,-,-,-)$ and $c=1$, ${\rm d}\tau^2={\rm d}s^2$. They prefer to use proper time than the interval (e.g. Weinberg).
+
+
+\subsection{Space/Time-Like Interval and Light Cone }
+\defn{We call a Interval space-like if $I>0$, and time-like if $I<0$. $I=0$ denotes the light propagation or things propagate at speed of $c$.}
+
+We draw a Light Cone whose boundary is delineated by light. The 4-D space in the up-part of the cone is absolutely future, the counterpart is absolutely past. Outside is absolutely separate. A particle, like you, can only travel along a curve upward inside the cone.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.8\textwidth]{12.jpg}
+    \caption{Light cone, actually is a 4-D super-cone}
+\end{figure}
+
+\subsection{Lorentz Matrix and Hyperbolic Function }\label{hyperbolic}
+The invariance of the length $l^2=x^2+y^2+z^2$ in Euclidean space provides the counter-clockwise rotation in $xy$ plane:
+\begin{equation}
+\left\{
+\begin{aligned}
+x' & =  x \cos{\phi}-y \sin{\phi} \\
+y' & = x \sin{\phi}+y\cos{\phi} \\
+z' & = z
+\end{aligned}
+\right.
+\end{equation}
+It's because $\sin^2{\phi}+\cos^2{\phi}=1$.
+
+Now we know the invariance of the interval $s^2=-c^2t^2+\vec x^2+\vec y^2+\vec z^2=s'^2$. Like the rotation in the Euclidean space, we can do the classical rotation between spatial coordinates, in other words, in $xyz$ sub-space. The rotation is called {\bfseries Lorentz Rotation}. For example, The matrix form of the rotation in $xy$ plane is $\begin{pmatrix}
+   1& 0 & 0 & 0\\
+   0 & \cos{\phi} & -\sin{\phi} & 0\\
+   0 & \sin{\phi} & \cos{\phi} & 0\\
+   0 &0 & 0& 1
+  \end{pmatrix}$.
+
+
+The minus sign before $t$ in the sum of interval allows us do a pseudo-rotation:
+\begin{equation}
+\left\{
+\begin{aligned}
+x' & = & x \cosh{\zeta}+ct\sinh{\zeta} \\
+ct' & = & x \sinh{\zeta}+ct\cosh{\zeta}  
+\end{aligned}.
+\right.
+\end{equation}
+It's because $\cosh^2{\zeta}-\sinh^2{\zeta}=1$. The 
+initial configuration is $\tanh{\zeta}=\frac{v}{c}$, which is $\cosh^2{\zeta}=\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}$ and $\sinh{\zeta}=\frac{\frac{v}{c}}{\sqrt{1-\frac{v^2}{c^2}}}$.\\
+Here we can find out the matrix form of $\Lambda^\alpha_\beta$ is $\begin{pmatrix}
+   \cosh{\zeta}& \sinh{\zeta} & 0 & 0\\
+   \sinh{\zeta} & \cosh{\zeta} & 0 & 0\\
+   0 & 0 & 1 & 0\\
+   0 &0 & 0& 1
+  \end{pmatrix}$. 
+  We call this kind of Lorentz Transormation the {\bfseries Lorentz Boost}, a translation with a constant velocity in $x$ direction. If the direction of 'Boost' changes oppositely, the matrix would be $\begin{pmatrix}
+   \cosh{\zeta}& -\sinh{\zeta} & 0 & 0\\
+   \sinh{\zeta} & -\cosh{\zeta} & 0 & 0\\
+   0 & 0 & 1 & 0\\
+   0 &0 & 0& 1
+  \end{pmatrix}$. 
+  
+   There are 3 operations ($x$, $y$, $z$) in Lorentz Boost and 3 operations ($xy$, $yz$, $xz$) in Lorentz Rotation.
+
+
+\subsection{How the length change}
+
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=\textwidth]{11.jpg}
+    \caption{}\label{length}
+\end{figure}
+
+
+From figure \ref{length}, the length of the ruler measured in $K$ is $\Delta l=x_1-x_2$, and :
+\begin{equation}
+\left\{
+\begin{aligned}
+x_1=&\frac{x_1'+Vt_1'}{\sqrt{1-\frac{v^2}{c^2}}}\\
+x_2=&\frac{x_2'+Vt_2'}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{aligned}.
+\right.
+\end{equation}
+
+The measuring in $K'$ is instant, so $t_1'=t_2'=t$, then:
+\begin{equation}
+x_1-x_2=\gamma(v)(x_1'-x_2'),
+\end{equation}
+which also means:
+\begin{equation}
+\boxed{l'=\sqrt{1-\frac{v^2}{c^2}}l=\frac{l}{\gamma}<l}.
+\end{equation}
+That is Lorentz Transformation of \textbf{length}. The length in moving direction decrease when you move. However, the height or width, perpendicular to the moving direction remains the same. 
+
+If you set $K'$  rather than $K$ to be at rest, you will find $l'>l$.
+
+
+
+\section{Relativistic Mechanics}
+\subsection{4-Velocity}
+The Newtonian velocity $\vec v=\frac{{\rm d}\vec x}{{\rm d}t}$, here $t$ is a scalar.
+
+The Newtonian velocity can varies under SO(3) group (Rotation) $\vec x_i=O_{ij}\vec x_j$, which means  $\vec v_i=O_{ij}\vec v_j$. This is symply because $\frac{{\rm d}O_{ij}}{{\rm d}t}=0$ (Expand the formula before you will find why).
+
+ 4-velocity require Lorentz covariant $u^\alpha=\Lambda^\alpha_\beta u^\beta$ under $x^\alpha=\Lambda^\alpha_\beta x^\beta$:
+\begin{equation}\begin{aligned}
+u^\alpha=\frac{{\rm d}x^\alpha}{{\rm d}h}&=\frac{{\rm d}\Lambda^\alpha_\beta x^\beta}{{\rm d}h}\\
+&=\Lambda^\alpha_\beta\frac{{\rm d} x^\beta}{{\rm d}h}+x^\beta \frac{{\rm d}\Lambda^\alpha_\beta }{{\rm d}h}\\
+&=\Lambda^\alpha_\beta u^\beta.
+\end{aligned}
+\end{equation}
+So the second term $\frac{{\rm d}\Lambda^\alpha_\beta }{{\rm d}h}$ should be 0.
+The only reasonable quantity $h$ in relativity to get 4-velosity is also a scalar --- the Interval $s$, finally:
+ \defn{The 4-velocity 
+\begin{equation}
+u^\alpha=\frac{{\rm d}x^\alpha}{{\rm d}s}.
+\end{equation}
+And 4-acceleration
+\begin{equation}
+w^\alpha=\frac{{\rm d}^2x^\alpha}{{\rm d}s^2}.
+\end{equation}}
+
+We can get 
+\begin{equation}
+u^\alpha u_\alpha=\frac{{\rm d}x^\alpha}{{\rm d}s}\frac{{\rm d}x_\alpha}{{\rm d}s}=\frac{{\rm d}s^2}{{\rm d}s^2}=1.
+\end{equation}
+
+\subsection{Action and Lagrangian for a Free Relativistic Particle}\label{freeaction}
+The Action should be a scalar, and a differential of the first order, the only reasonable quantity is the integral of the interval ${\rm d}s$ (the ${\rm d}s$ below is the infinitesimal interval rather than the infinitesimal action)
+\begin{equation}
+    S=-\alpha \int^b_a {\rm d}s=-\alpha \int \sqrt{\eta_{ij}{\rm d}x^i{\rm d}x^j},
+\end{equation}
+here $\alpha$ is a constant (why $-\alpha$? see Landau \S 8). Inspired by the Action of classical free particle $S=\int \frac12 mv^2{\rm d}t$, we subtract out a ${\rm d}t$:
+\begin{equation}
+    S=-\alpha \int^{t_2}_{t_1} \sqrt{\eta_{ij}{\rm d}\dot x^i{\rm d}\dot x^j}{\rm d}t=-\alpha \int^{t_2}_{t_1} c \sqrt{1-\frac{{\rm d}\vec x}{c^2{\rm d}t}}{\rm d}t=-\alpha \int^{t_2}_{t_1}c L{\rm d}t.
+\end{equation}
+And we know that the Lagrangian should become $\frac12 mv^2$ when $v$ approaches to 0. We expand $L$ respect to $v$, we can find $\alpha=mc$.
+So,
+\begin{equation}
+    \boxed{
+    L=-mc^2\sqrt{1-\frac{v^2}{c^2}},
+    }
+\end{equation}
+and
+\begin{equation}
+   S=-mc\int {\rm d}s
+\end{equation}
+
+
+\subsection{Momentum and Energy}
+By definition in Classical Mechanics, the Momentum can be directly derived from Lagrangian:
+\begin{equation}
+    \vec p=\frac{\partial L}{\partial \vec v}=\frac{m\vec v}{\sqrt{1-\frac{v^2}{c^2}}}=m \gamma \vec v.
+\end{equation}
+
+And the energy
+\begin{equation}
+    E=\vec p \vec v-L=\frac{mc^2}{\sqrt{1-\frac{v^2}{c^2}}}=m\gamma c^2\approx mc^2+0+\frac12 m v^2,
+\end{equation}
+The first term is stationary energy which is well known by human. The second derivative is 0, the third term is kinetic energy.
+
+\subsection{Force and Acceleration}
+\begin{equation}\begin{aligned}
+\vec F=\frac{{\rm d}\vec p}{{\rm d}t}&=m\gamma \dot{\vec v}+m\dot \gamma \vec v\\
+&=m\gamma \vec a+m\gamma^3\frac{(\vec v\cdot \vec a) }{c^2}\vec v\\
+& \nparallel \vec a,
+\end{aligned}
+\end{equation}
+which is totally different with classical situation. (Not only different in modulus but also in direction.)
+
+We can also define a 4-Force using 4-acceleration just like classical equation 
+\begin{equation}
+    F^\alpha=m\frac{{\rm d}^2x^\alpha}{{\rm d}\tau^2}=m\gamma^2\frac{{\rm d}^2x^\alpha}{{\rm d}t^2}.
+\end{equation}
+
+\subsection{4-Momentum}
+Somebodies find a  interesting quantity
+\begin{equation}
+    \vec p^2-\frac{E^2}{c^2}=m^2\gamma^2v^2-\frac{m^2\gamma^2c^4}{c^2}=-m^2c^2.
+\end{equation}
+So we define a 4-momentum.
+\defn{The 4-momentum is
+\begin{equation}
+    p^\alpha=(\frac{E}{c},\vec p).
+\end{equation}}
+Which have the quantity that $p^\alpha p_\alpha=-m^2c^2$. 
+So
+\begin{equation}
+    p^\alpha=\Lambda^\alpha_\beta p^\beta.
+\end{equation}
+Just like 4-velocity. The convenient transformation under the Lorentz's framework is the reason to pursue 4-quantity like this. 
+
+And if $m=0$, 
+\begin{equation}
+    \vec p^2-\frac{E^2}{c^2}=0.
+\end{equation}
+It is 
+\begin{equation}
+    E=c|p|,
+\end{equation}
+which is reasonable for massless particle (like photon).
+\subsection{Least Action Principle}\label{LAP}
+By ${\rm d}s=\sqrt{{\rm d}x_i{\rm d}x^i}$,
+\begin{equation}\begin{aligned}
+    {\rm \delta}S&=-mc{\rm \delta}\int_a^b {\rm d}s\\
+    &=-mc\int^b_a \frac{{\rm d}x_i{\rm \delta}{\rm d}x^i}{{\rm d}s}\\
+    &=-mc\int^b_a u_i{\rm d}x^i\\
+    &=-mc\left(u_i{\rm \delta}x^i\Big|^b_a-\int^b_a{\rm \delta}x^i\frac{{\rm d}u_i}{{\rm d}s}{\rm d}s\right)\\
+    &=0+mc\int^b_a{\rm \delta}x^i\frac{{\rm d}u_i}{{\rm d}s}{\rm d}s\\
+    &=0.
+\end{aligned}
+\end{equation}
+Which derives the consistency of a free particle's 4-velocity:
+\begin{equation}
+    \frac{{\rm d}u_i}{{\rm d}s}=0,
+\end{equation}
+or just ${\rm d}u_i=0$.
+
+\chapter{Relativistic particle in Electromagnetic Field*}
+
+\section{Action}\label{emaction}
+The total action is
+\begin{equation}\boxed{
+S=-\int^b_a (\underbrace{mc \ ds}_{relativistic} - \underbrace{\frac e{c}A_i \ dx^i}_{particle \ in \  EM}-\underbrace{\frac{1}{4}d^4xF_{\mu\nu}F^{\mu\nu}}_{Field}).}
+\end{equation}
+Potential in 4 dimension is: $A^\alpha=(\phi,\vec{A}$).\footnote{You can find the potential in the second half of Griffith's \textit{Introduction to Electrodynamics}.}\\
+The field part action is formed in such a way that only reasonable scalar which also possesses linear property of electromagnetic field (superposition of charge or field is allowed) is $F_{\mu\nu}F^{\mu\nu}$. \footnote{For detail see Landau \S 27.}
+
+
+\section{Particle Hamiltonian}
+From what we have talked before, we can get
+\begin{equation}
+S=\int^{t^2}_{t^1}(-mc^2\sqrt{1-\frac{v^2}{c^2}}-\frac{e}{c}\phi+\frac{e}{c}\vec{A}\cdot\vec{v}){\rm{d}}t,
+\end{equation}
+Then
+\begin{equation}
+     L=\frac{dS}{dt}=-mc^2\sqrt{1-\frac{v^2}{c^2}}-\frac{e}{c}\phi+\frac{e}{c}\vec{A}\cdot\vec{v}.
+\end{equation}
+Because momentum $\vec{p}=\frac{\partial L}{\partial\vec{v}}$
+\begin{equation}\label{momentum}
+\vec{p}=\frac{m\vec{v}}{\sqrt{1-\frac{v^2}{c^2}}}+\frac{e}{c}\vec{A},
+\end{equation}
+and Hamiltonian is
+\begin{equation}
+H=\vec{v}\frac{\partial L}{\partial \vec{v}}-L=\frac{mc^2}{\sqrt{1-\frac{v^2}{c^2}}}+e\phi .
+\end{equation}
+Then lets calculate. By using 2 equations above, we get
+\begin{equation}
+\begin{aligned}
+\frac{(H-e\phi)^2}{c^2}&=m^2c^2+(\vec{p}-\frac{e}{c}\vec{A})^2\\
+&=m^2c^2+\frac{m^2v^2}{1-\frac{v^2}{c^2}}\\
+&=\frac{m^2c^2-m^2c^2\frac{v^2}{c^2}+m^2v^2}{1-\frac{v^2}{c^2}}\\
+&=\frac{m^2c^2}{1-\frac{v^2}{c^2}}.
+\end{aligned}
+\end{equation}
+So that
+\begin{equation}
+H=\sqrt{m^2c^4+c^2(\vec{p}-\frac{e}{c}\vec{A})^2}+e\phi .
+\end{equation}
+
+
+\section{From Action to EOM}
+\subsection{Particle EOM}
+Take the EOM of charged particle in the electromegnetic field as an example. We have got Equation \ref{momentum}.
+Remember \ref{1} the Euler-Lagrangian Equation $\frac{{\rm{d}}}{{\rm{d}}t}\frac{\partial L}{\partial \dot{q}}=\frac{\partial L}{\partial q}$
+we can get 
+\begin{equation}
+\begin{aligned}
+\frac{\partial L}{\partial \dot{\vec q}}&=\frac{m\dot{\vec q}}{\sqrt{1-\frac{\dot{\vec q}^2}{c^2}}}+\frac{e}{c}\vec{A}=\vec{p}+\frac{e}{c}\vec{A},\\
+\frac{\partial L}{\partial \vec q}&=\frac{e}{c}\nabla(\vec{A}\cdot\dot{\vec q})-e\nabla\phi=\frac{e}{c}(\dot{\vec q}\cdot\nabla)\vec{A}+\frac{e}{c}\dot{\vec q}\times \left(\nabla\times\vec{A}\right)-e\nabla\phi.
+\end{aligned}
+\end{equation}
+Then Euler-Lagrangian Equation can be written as
+\begin{equation}
+\frac{{\rm{d}}}{{\rm{d}}t}(\vec{p}+\frac{e}{c}\vec{A})=\frac{e}{c}(\dot{\vec q}\cdot\nabla)\vec{A}+\frac{e}{c}\dot{\vec q}\times\left(\nabla\times\vec{A}\right)-e\nabla\phi.
+\end{equation}
+Because $\frac{{\rm{d}}}{{\rm{d}}t}\vec{A}=\frac{\partial A}{\partial t}+\nabla\vec{A}\dot{\vec q}$, we can finally get 
+\begin{equation}
+\frac{{\rm{d}}\vec{p}}{{\rm{d}}t}=-\frac{e}{c}\frac{\partial\vec{A}}{\partial t}-e\nabla\phi+\frac{e}{c}\dot{\vec q}\times\left(\nabla\times\vec{A}\right),
+\end{equation}
+which is the EOM. The left part $\frac{{\rm{d}}\vec{p}}{{\rm{d}}t}$ represents the force $\vec F$, and in the right part, $-\frac1c\frac{\partial\vec A}{\partial t}-\nabla\phi$ is the electronic field strength $E$ and $\nabla\times\vec A$ is the magnetic field strength $B$.
+
+Finally we successfully obtained the EOM that we have learned in our high school, the expression of \bfseries Lorentz Force :
+\begin{equation}
+    \vec F=\vec E e+\vec v\times \vec Be.
+\end{equation}
+
+\subsection{Field EOM}
+Also you can calculate the EOM of the field from the field part of Action. This is one of your exercises. The result should be Maxwell equations(Both Homogeneous and non-homogeneous).
+
+\section{Electromagnetic Tensor}
+
+\defn{Electromagnetic Tensor is: 
+\begin{equation}
+\begin{aligned}
+    F^{\alpha\beta}&=\partial^\alpha A^\beta-\partial^\beta A^\alpha\\
+    &=-F^{\beta\alpha}
+\end{aligned}
+\end{equation}
+}
+We can get the matrix form of Electronic Tensor:
+
+\begin{equation}
+    F^{\alpha\beta}={\left(\begin{array}{cccc}
+0&\frac{E_x}{c}&\frac{E_y}{c}&\frac{E_z}{c}\\
+-\frac{E_x}{c}&0&-B_z&B_y\\
+-\frac{E_y}{c}&B_z&0&-B_x\\
+-\frac{E_z}{c}&-B_y&B_x&0
+\end{array}
+\right)}.
+\end{equation}
+We can see that it is \textbf{anti-symmetrical}, satisfying $F^{\alpha\beta}=-F^{\beta\alpha}$.
+If we do a inner product, we will get a result which is Lorentz invariant. That's also why we want the tensor.
+\begin{equation}
+    F_{\alpha\beta}F^{\alpha\beta}=2(B^2-\frac{E^2}{c^2})=invariant.
+\end{equation}
+
+\subsubsection{Relationship with Electromagnetism}
+From equation (3.1) we know the total action, in which $-\frac{1}{4}\int d^4xF_{\mu\nu}F^{\mu\nu}$ is electromagnetic field term.
+Then we can get Lagrangian:
+\begin{equation}
+\begin{aligned}
+    \mathcal{L}&=-\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu}\\
+    &=-\frac{1}{2\mu_0}(\partial_\mu A_\nu\partial^\mu A^\nu-\partial_\nu A_\mu\partial^\mu A^\nu)
+\end{aligned}
+\end{equation}
+Take it into Lagrange Equation, we can get: 
+\begin{equation}
+    \partial_\nu F^{\mu\nu}=0
+\end{equation}
+
+\subsubsection{Maxwell Equation in Electromagnetic Tensor Form}
+In Maxwell Equation, $\nabla\cdot\vec{E}=\frac{\rho}{c}$ and $\nabla\times\vec{B}-\frac{1}{c^2}\frac{\partial\vec{E}}{\partial t}=\mu_0 \vec{J}$ can be written as:
+\begin{equation}
+    \partial_\alpha F^{\alpha\beta}=\mu_0J^\beta
+\end{equation}
+Where $J^\alpha=(c\rho,\vec{J}$) is four-current.\\
+Also, $\nabla\cdot\vec{B}=0$ and $\frac{\partial\vec{B}}{\partial t}+\nabla\times\vec{E}=0$ can be written as:
+\begin{equation}\label{Fbianchi}
+    F_{\alpha\beta,\gamma}+F_{\beta\gamma,\alpha}+F_{\gamma\alpha,\beta }=0
+\end{equation}
+Where $F_{\alpha\beta,\gamma}=\frac{\partial F_{\alpha\beta}}{\partial\gamma}$, and this formula is called \textbf{Bianchi Identity}.\\
+Try to prove it. 
+
+
+\part{General Relativity}
+\chapter{Fundamental}
+The rough difference between 'general' and 'special' is the existence of gravitation.
+
+\section{2 Axioms of General Relativity}
+\begin{itemize}
+\item The space-time is a 4-Dimensional {\bfseries manifold};
+\item Local Inertial Reference Frame(LIRF) can be always found in the neighborhood of any point in the space-time.
+\end{itemize}
+
+\subsection{Manifold}
+\defn{A manifold is a topological space that {\bfseries locally} resembles Euclidean space near each point. }\\
+For example, the surface of the Earth is a 2-D manifold, where locally is seemed flat but generally a sphere.
+Please refer to the Appendix to seek strict definition.
+\begin{figure}[htbp]
+
+  \centering
+    \includegraphics[width=0.3\textwidth]{2.png}
+ \caption{The four charts each map part of the circle to an open interval, and together cover the whole circle.}
+\end{figure}
+
+\subsection{Equivalence Principle (EP)}
+The natural state is the Free-Fall. A stationary reference frame in a gravitational field is non-inertial.
+The EP claims that an inertial reference frame for Einstein Free-Fall Reference Frame is indistinguishable from a Newtonian inertial frame located far from any gravitational source. There are two levels to describe the principle:
+\begin{itemize}
+\item Weak EP: only influence the motion of particles due to gravity.
+\item Strong EP: the equivalence is extended to all physical phenomenon.
+\end{itemize}
+EP is only {\textbf local} because gravitational fields can be non-uniform.
+The LIRF given by the second Axiom has the following properties:
+\begin{itemize}
+\item In LIRF the physics is locally Lorentzian.
+\item The LIRF is identified by the absence of gravity.
+\end{itemize}
+A inertial reference frame is a frame that the body inside it isn't subject to the force. Now we needn't to remove that are universal (gravity).\\
+
+\begin{proof}
+
+Let's consider 2 situations.
+\begin{figure}[htbp]
+\begin{minipage}[t]{0.5\linewidth}
+\centering
+\includegraphics[width=2.2in]{4.jpg}
+\caption{A}
+\label{fig:side:a}
+\end{minipage}%
+\begin{minipage}[t]{0.5\linewidth}
+\centering
+\includegraphics[width=2.2in]{5.jpg}
+\caption{B}
+\label{fig:side:b}
+\end{minipage}
+\end{figure}\\
+
+\textbf{For picture A:}
+\begin{equation}
+m\ddot{y}\vec{y}=R\vec{y}-mg\vec{y}
+\end{equation}
+Where $R$ is normal force. For $\ddot{y}=0$ we can get:
+\begin{equation}
+{R=mg}
+\end{equation}
+\textbf{For picture B:}
+\begin{equation}
+m\ddot{y'}=\vec{R}+\vec{F}_{eff}
+\end{equation}
+Where $\vec{F_{eff}}=m\vec{a_{rel}}$, $y'$ is the direction of the reference frame according to the rocket.So we can conclude that $\ddot{\vec{y'}}=0$. Also we have: $\vec{a}=\vec{a'}+\vec{a_{rel}}$, where $\vec{a}=g\vec{y}$, $\vec{a'}=\ddot{\vec{y}}=0$.\\
+So that $\vec{a_{rel}}=\vec{a}=g\vec{y}$. Then we can conclude 
+\begin{equation}
+{R=mg},
+\end{equation}
+which means $A=B$.
+\end{proof}
+
+EP tells us the gravitational force is equivalent to the acceleration of a reference frame that is not effected by the gravity.\\
+EP also tells us the gravitational mass $m_g$, the one in the Newtonian gravitational formula $F=\frac{Gm_gM_g}{r^2}$ is the same as the one creating the inertia $F=m_i a$.
+
+For every point in the spacetime, we can choose a free falling reference frame at every point whether there is gravitational field or not, Although the reference frame could be valid in very small region near the point due to strong homogeneous of the gravitational field. The first Axiom, which could be seen reasonable here: the spacetime is locally flat.
+
+\subsection{So what is gravity?}
+
+LIRF is free of the concept of the gravitation.\\
+Since we can choose a LIRF at every point in a gravitational field according to EP, the  gravitation at a point can be replaced by some property determined by the LIRF of the point. \\
+The continuous changing of gravitational force in the space is replaced by the continuous changing of LIRFs in the space.
+
+Therefore, we just need to study the property of the spacetime manifold, i.e. the difference of choosing coordinate systems at every point on the manifold,  if we want to study the gravity. The details on a manifold can be described by sort of concepts like curvatures, covariant derivatives in Differential Geometry which will be introduced in Chapter \ref{mathf}.
+
+Now we can answer the question at the very beginning of Chapter \ref{pre}: General Relativity is a symmetry theory under general coordinate transformation and here the coordinates transformation is not we choosing other coordinate systems globally but the coordinate changing between different points on the manifold (locally).\\
+But first let us just play a model by global coordinate transformation in Section \ref{rindler}.
+
+\section{See some definition in a nutshell from a new metric}\label{rindler}
+We are just considering a new metric called {\bfseries Rindler Metric}\footnote{\url{https://en.wikipedia.org/wiki/Rindler_coordinates}}
+\begin{equation}
+    {\rm d}s^2=\eta^2{\rm d}\xi^2-{\rm d}\eta^2-{\rm d}y^2-{\rm d}z^2.
+\end{equation}
+Roughly the matrix form is $M_4=M_2(\xi,\eta) \times E_2(y,z)$. $E_2$ means 2-D Euclidean.
+
+The metric is based on the observer who is accelerating at a constant acceleration undergoing a hyperbolic motion due to special relativity.
+
+The metric has some properties:
+\begin{itemize}
+    \item Diagonal;
+\item $\xi={\rm const}$, $|\eta|=|\int_0^\eta{\rm d}\eta'|$;
+\item $\eta={\rm const}$, ${\rm d}\tau=|\eta|{\rm d}\xi$.\\
+\end{itemize}
+
+Rindler spacetime is flat because it can fully transfer into Minkowski Metric using coordinate transformation. See Subsection \ref{Rindlersing}.
+
+
+\subsection{Light Geodesic}
+\defn{{\bfseries Geodesic} is the ``shortest'' path between two points on a manifold. 
+
+The special case is a straight line in flat Euclidean space, or a segment of a great circle on the surface of the Earth. You must have known the light geodesic in Minkowski Spacetime is the border of the Light cone.}
+
+We have proved that ${\rm d}s^2=0$ is satisfied in any coordinates, so it is also a truth in $(\xi,\eta,y,z)$ coordinate. Lets consider the light is traveling only in x-t plane (${\rm d}y={\rm d}z=0$), then:
+\begin{equation}
+    \eta{\rm d}\xi=\pm {\rm d}\eta.
+\end{equation}
+After an integration, we can get:
+\begin{equation}
+    \eta=\alpha e^{\pm \xi},
+\end{equation}
+it is same to the form:
+\begin{equation}
+    \xi=\pm{\rm ln}\eta+{\rm const}.
+\end{equation}
+which is the trajectory(geodesic) of the light in this coordinates, as the picture shows. You can see you will get a {\bfseries singularity} when $\eta=0$.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.55\textwidth]{14.png}
+ \caption{Geodesic of Light}
+\end{figure}
+
+
+\subsection{Red Shift}
+You can easily find the relation $\Delta \xi_1=\Delta \xi_2=\Delta \xi$, suppose that:
+\begin{equation}
+    \begin{aligned}\begin{cases}
+    \Delta\tau_1&=\eta_1\Delta\xi\\
+    \Delta\tau_2&=\eta_2\Delta\xi
+    \end{cases}
+    \end{aligned}.
+\end{equation}
+If $\eta_1\approx\eta_2$ and $\eta_2=\eta_1-\Delta\eta$. We can get:
+\begin{equation}
+    \Delta\tau_2=(1+\frac{\Delta\eta}{\eta})\Delta\tau_1,
+\end{equation}
+let $N$ be the number of wave peaks of one light beam,
+\begin{equation}
+    \nu_1\Delta\tau_1=\nu_2\Delta\tau_2=N.
+\end{equation}
+So
+\begin{equation}
+    \nu_2\simeq(1-\frac{\Delta\eta}{\eta})\nu_1<\nu_1.
+\end{equation}
+which represents \textbf{red shift}.
+
+Einstein realized that $\Delta \eta\sim h$ which is the distance the light travel , and $\eta \sim \frac1g$.
+\begin{equation}
+    \nu_2\simeq(1-\frac{gh}{c^2})\nu_1<\nu_1,
+\end{equation}
+$c^2$ is for dimensional reason.\\
+The redshift caused by accelerating is equivalence to the gravitational redshift, see the redshift caused by a stationary spherical blackhole at Subsection \ref{Schwred}\footnote{See also \url{ https://en.wikipedia.org/wiki/Gravitational_redshift}}.
+
+
+\subsection{Eliminating The Singularity}\label{Rindlersing}
+Consider a coordinates transformation $(\xi,\eta,y,z)\longrightarrow(t,x,y,z)$:
+If $\eta >0$,
+\begin{equation}
+\begin{aligned}\begin{cases}
+    &x=\eta \cosh{\xi}\\
+    &t=\eta \sinh{\xi},
+    \end{cases}
+\end{aligned}
+\end{equation}
+if $\eta >0$,
+\begin{equation}
+\begin{aligned}\begin{cases}
+    &x=\eta \sinh{\xi}\\
+    &t=\eta \cosh{\xi},
+    \end{cases}
+\end{aligned}
+\end{equation}
+we get Minkowski spacetime
+\begin{equation}
+    {\rm d}s^2=\eta^2{\rm d}\xi^2-{\rm d}\eta^2-{\rm d}y^2-{\rm d}z^2 \longrightarrow \underbrace{{\rm d}t^2-{\rm d}x^2-{\rm d}y^2-{\rm d}z^2}_{Minkowski}.
+\end{equation}
+The coordinate transformation do not depends on the position, so the system is globally Minkowski.
+
+What's the physical meaning of the result? Only by coordinates transformation, time and space are detached, and there's {\bfseries no singularity!}
+
+\subsection{Horizon}
+\begin{equation}
+    x^2-t^2=\eta^2
+\end{equation}
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.5\textwidth]{15.png}
+ \caption{Horizon of a accelerating particle}
+\end{figure}
+
+\section{Rotating Coordinates}
+A rotating frame along $z$ axis at a angular velocity $\Omega$ can be described by coordinates transformation:
+\begin{equation}
+    \begin{aligned}\begin{cases}
+    x&=x'\cos{\Omega t}-y'\sin{\Omega t}\\
+    y&=x'\sin{\Omega t}+y'\sin{\Omega t}\\
+    z&=z'
+    \end{cases}
+    \end{aligned}.
+\end{equation}
+Then the interval can be described as
+\begin{equation}
+    {\rm d}s^2=[c^2-\Omega^2(x'+y')]{\rm d}t'^2-{\rm d}x'^2-{\rm d}y'^2-{\rm d}z'^2+2\Omega y'{\rm d}x'{\rm d}t'- 2\Omega x'{\rm d}y'{\rm d}t'.
+\end{equation}
+Now the metric is not diagonal.
+
+However, you should now that  both Rindler and Rotating coordinates don't change the flatness of the Minkowski Spacetime.
+
+\noindent\rule{\textwidth}{0.3mm}
+\rem \textbf{Superluminal?}
+
+Try to compute the ${\rm d}s^2$ of the star 1 light-year away under the reference frame stationary with a 1 r/s-revolving observer. Some may opine that the star moves at the speed of $2\pi$ ly/s. Explain if the star is real superluminal. \\
+Certainly, the answer is no.
+
+\noindent\rule{\textwidth}{0.3mm}
+
+Why we do so many coordinate transformations? Because our nature properties do not depend on the man-made coordinates. We would like to seek the different properties through out different coordinate systems and find the true one.
+
+\section{Distance Measuring under General Relativity}
+How to measure the length of $AB$ generally?
+We use photon as our messenger, travel toward the target and then back immediately. The total time it required is
+\begin{equation}
+    {\rm d}\tau=\frac{\sqrt{g_{00}}}{c}{\rm d}t=\frac{\sqrt{g_{00}}}{c}\left({\rm d}x^{\alpha(2)}-{\rm d}x^{\alpha(2)}\right),
+\end{equation}
+then the distance will be
+\begin{equation}
+    {\rm d}l^2=\frac{c^2}{4}{\rm d}\tau^2.
+\end{equation}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{GRmeasure.png}
+    \caption{Measuring the distance}
+    \label{GRmeasure}
+\end{figure}
+
+\chapter{Mathematical Formulation}\label{mathf}
+Differential Geometry would not be requisite but it would be better if you have handled it well. Concepts here are mostly counter-intuitive so be careful.
+
+\section{Curvature demystified}
+
+The property that is meant by the "curvature" of space is not curvature in the usual sense, or even in the sense of simple mathematics (classical differential geometry). Actually it is a internal property of a manifold.  Blame C. F. Gauss for this, as we owe the terminology to him.  Just to make this point explicitly, "curve" originally meant a curved line, but in Gauss' terms a 1-D space (line) cannot be curved! Besides, the surface of a cylinder, which is thought to be curved in our daily lives, is actually flat.\\
+Here are some examples of curvature:
+
+\begin{itemize}
+    \item Spacetime Curvature caused by Tidal Force:
+
+Tidal Force is a phenomenon caused by gradient in gravitational field. The reason you see the sea surges up and down is the tidal forces generated by the Sun and the Moon.\\
+We begin with a tiny free-falling elevator locates near a point-like gravitational source at the beginning.
+
+\begin{equation}
+\begin{aligned}
+    m(\ddot{R+z})&=-\frac{GMm}{(R+z)^2}\hat{r}\\
+    &=-\frac{GMm}{R^2\left(1+\frac{z}{R}\right)^2}\hat{r}\\
+    &\approx{\underbrace{-\frac{GMm}{R^2}\hat{r}}_{m\ddot R}}+{\underbrace{\frac{2GMmz}{R^3}\hat{r}}_{m\ddot{z}}}.
+    \end{aligned}
+\end{equation}
+Then you can find the acceleration is depending on the vertical distance from the center of the elevator, smaller at the top and bigger at the bottom; and dependent on the absolute value of the horizontal distance from the center:
+\begin{equation}
+\begin{aligned}
+\ddot z  &=\frac{2GM}{R^3}\hat{z}\\
+\ddot y  &=-\frac{GM}{R^3}\hat{y}\\
+\ddot x  &=-\frac{GM}{R^3}\hat{x},
+\end{aligned}
+\end{equation}
+you can find there's a locally flat spacetime(no g-force) near the center, and the elevator is going to be longer and thinner if the elevator is soft enough. 
+
+The equation can be rewrite as
+\begin{equation}
+    \frac{{\rm d^2}\xi^i}{{\rm d}t^2}=-R_{0k0}^i\xi^k,
+\end{equation}
+where $
+    \xi^i={\left(\begin{array}{cccc}
+x\\
+y\\
+z
+\end{array}
+\right)},
+$
+and the components of the curvature are
+\begin{equation}\begin{aligned}
+    R_{010}^1=R_{020}^2&=-\frac{GM}{R^3};\\
+    R_{030}^3&=\frac{2GM}{R^3}.
+    \end{aligned}
+\end{equation}
+
+
+\item Curvature on the surface of a cylinder  with radius $R$:
+
+\thm{Gauss Curvature is the product of two principal curvatures $K=\kappa_1\kappa_2$.\footnote{Please refer to \url{https://en.wikipedia.org/wiki/Gaussian_curvature}}}
+
+Therefore, cylinder surface is flat:
+\begin{equation}
+K=\kappa_1\kappa_2=\frac{1}{R}\frac{1}{\infty}=0.
+\end{equation}
+In fact, we can roll a flat paper into a cylinder, the process is actually a coordinate transformation: change $x$ to $\theta$ and keep $y$.
+
+\end{itemize}
+\begin{itemize}
+
+\item Curvature on a sphere with radius $a$:
+
+On a sphere,
+\begin{equation}
+    \sin{\frac{\xi}{2a}}=\sin{\frac{\xi_0}{2a}}\cos{\phi},
+\end{equation}
+when $\xi$ is small,
+\begin{equation}
+    \xi=\xi_0 \cos{\phi}=\xi_0\cos{\frac{s}{a}}.
+\end{equation}
+Now there's a non-zero Gaussian Curvature
+\begin{equation}
+    K=\frac{1}{a^2}=-\frac1\xi\frac{{\rm d}^2\xi}{{\rm d}s^2}.
+\end{equation}
+Obviously you can not cut, stretch the paper shell of a globe to turn it into a flat paper. However, if we cut a very small piece of paper at any point on the shell, we get a approximately flat paper. Remember the concept of `manifold'.
+
+\end{itemize}
+
+\section{Covariant Differentiation}
+First Let's see how the vector changes on a manifold, then we can precisely define the curvature at any point on an arbitrary manifold.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Covariant.png}
+    \caption{How vector changes in space}
+    \label{covariant}
+\end{figure}
+
+A covariant vector is transformed according to
+\begin{equation}
+    A_i=\frac{\partial x'^k}{\partial x^i}A'_k.
+\end{equation}
+Take the derivation we naturally get
+\begin{equation}\begin{aligned}
+    {\rm d}A_i&=\frac{\partial x'^k}{\partial x^i}{\rm d}A'_k+A'_k{\rm d}\frac{\partial x'^k}{\partial x^i}    \\
+    &=\frac{\partial x'^k}{\partial x^i}{\rm d}A'_k+A'_k\frac{\partial^2 x'^k}{\partial x^i\partial x^l}{\rm d}x^l.
+\end{aligned}
+\end{equation}
+The quantity that caused by the translation on a curved manifold is written in \begin{equation}
+\delta A_i=A'_k\frac{\partial^2 x'^k}{\partial x^i\partial x^l}{\rm d}x^l=\Gamma^k_{il}A_k{\rm d}x^l.
+\end{equation}
+Here $\Gamma^k_{il}$ is called \textbf{Connection Coefficient} or \textbf{Christoffel Symbol}, which lets tensor analysis becoming concise. We will go into detail about it in Section \ref{Christoffel}.
+
+We now have the quantity 
+\begin{equation}\begin{aligned}
+    {\rm D}A_i&={\rm d}A_i-\delta A_i\\
+    &=\left(\partial_lA_i-\Gamma^k_{il}A_k\right){\rm d}x^l\\
+    &=A_{i;l}{\rm d}x^l,
+    \end{aligned}
+\end{equation}
+then we define {\bfseries Covariant Derivative} of a vector $A_i$ in parenthesis in the equation above
+\begin{equation}
+    \boxed{\nabla_l A_i=A_{i;l}=\partial_lA_i-\Gamma^k_{il}A_k.}
+\end{equation}
+
+
+Just like normal derivatives, you can also prove the correctness of Leibniz rule of covariant derivative $(A_iB_k)_{;l}=A_{i;l}B_k+A_iB_{k;l}$.
+
+Besides, the ${\rm D}A_i$ is a vector which is easy to prove, then
+ \begin{equation}
+    g_{ik}{\rm D}A^k={\rm D}A_i={\rm D}\left(g_{ik}A^k\right)=g_{ik}{\rm D}A^k+\left({\rm D}g_{ik}\right)A^k,
+\end{equation}
+this reads 
+\begin{equation}\label{metriccov}
+    {\rm D}g_{ik}=0.
+\end{equation}
+
+
+The covariant derivative of a tensor $A_{ik}$ is\footnote{Find Proof in Landau \S85.}
+\begin{equation}
+    \nabla_l A_{ik}=A_{ik;l}=\partial_lA_{ik}-\Gamma^m_{il}A_{mk}-\Gamma^m_{kl}A_{im}.
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Christoffel Symbol}\label{Christoffel}
+We also call Christoffel Symbol ``Affine Connection'' or ``Connection Coefficient''.
+
+
+\subsection{Properties of Christoffel Symbol}
+
+\begin{itemize}
+\item In Flat spacetime
+
+Obviously,  if the spacetime is Galilean or Minkowski then $\Gamma^k_{il}=0$, and the covariant derivative is degenerated into normal derivatives, which looks reasonably.
+
+\item In LIRF
+
+  According to the Equivalence Principle, at any point on the manifold we can choose a LIRF where $\Gamma^k_{il}=0$.
+
+    \item \textbf{Not} a tensor
+    
+    If a tensor is zero then any coordinate transformation could not change its value to be non-zero. As we discussed above, when we shift from LIRF to other reference frame, this  law for tensor transformation is no longer valid.
+    
+    \item Symmetry 
+    \begin{equation}
+        \Gamma^k_{il}=\Gamma^k_{li}.
+    \end{equation}
+    
+\end{itemize}
+
+The relationship between metric tensor $g_{\mu\nu}$ and Christoffel Symbol can be simply obtained from the fact that the metric is invariant under the covariant derivative in Equation \ref{metriccov}: ${\rm D}g_{ik}=0$. We can list three equations:
+\begin{equation}
+    \left\{\begin{aligned}
+        g_{ik;l}&=\frac{\partial g_{ik}}{\partial x^l}-g_{mk}\Gamma^m_{il}-g_{im}\Gamma^m_{kl}=\frac{\partial g_{ik}}{\partial x^l}-\Gamma_{k,il}-\Gamma_{i,kl}=0\\
+        g_{li;k}&=\frac{\partial g_{li}}{\partial x^k}-g_{mi}\Gamma^m_{lk}-g_{lm}\Gamma^m_{ik}=\frac{\partial g_{li}}{\partial x^k}-\Gamma_{i,lk}-\Gamma_{l,ik}=0\\
+        g_{kl;i}&=\frac{\partial g_{kl}}{\partial x^i}-g_{ml}\Gamma^m_{ki}-g_{km}\Gamma^m_{li}=\frac{\partial g_{kl}}{\partial x^i}-\Gamma_{l,ki}-\Gamma_{k,li}=0.
+    \end{aligned}\right.
+\end{equation}
+ 
+Sum the first and the second equations and minus the third equation, then use the symmetry of the Christoffel Symbol we get the expression of Christoffel Symbol in terms of metric tensor:
+\begin{equation}
+    \Gamma^i_{kl}=\frac12 g^{im}\left(\frac{\partial g_{mk}}{\partial x^l}+\frac{\partial g_{ml}}{\partial x^k}-\frac{\partial g_{kl}}{\partial x^m}\right).
+    \label{Ch S}
+\end{equation}
+
+For simplicity, we often write $\Gamma=g^{-1}\partial g$, which can notice you that each Christoffel Symbol carries one metric derivative.\\
+
+Christoffel Symbol somehow represents the gravitational field strength, you will find this in derivation of the geodesics in Equation \ref{geodesics}.
+
+
+
+
+\section{Geodesics in General Relativity}
+For massive particle under culvilinear coordinates, by same principle (the least action principle), we generalize the result in subsection \ref{LAP} where the coordinates is not curved,  ${\rm d}u^i=0$, into
+\begin{equation}
+    {\rm D}u^i=0.
+\end{equation}
+
+This equation is ``good'' under general coordinates transformation  (general covariant), in contrast, ${\rm d}u^i=0$ is ``good'' only under Lorentzian Transformation.  \\
+Divided by ${\rm d}s$, 
+\begin{equation}\label{geodesics}
+\boxed{
+    \frac{{\rm d}^2 x^\alpha}{{\rm d}s^2}+\Gamma^\alpha_{\sigma\nu}\frac{{\rm d} x^\sigma}{{\rm d}s}\frac{{\rm d} x^\nu}{{\rm d}s}=0.}
+\end{equation}
+This is called \textbf{Geodesic Equation} for massive particle. Making an analogy between this and $a-\frac{F}{m}=0$, we can say $-m \Gamma^\alpha_{\sigma\nu}\frac{{\rm d} x^\sigma}{{\rm d}s}\frac{{\rm d} x^\nu}{{\rm d}s}$ is the 4-Force. That's why we consider the Christoffel Symbol as the field strength.\\
+You can interpret that if the spacetime is flat, which means $\Gamma=0$, then the geodesic equation degenerates to the law that  4-velocity is consistent in special relativity.
+
+For massless particle like photon, ${\rm d}s=0$ so the Equation \ref{geodesics} is not valid. We just need to change ${\rm d}s$ into another affine parameter ${\rm d}\lambda$.
+
+
+\subsection{Killing Vectors}\label{killing}
+Here 'Killing' is a name. The {\bfseries Killing vector} is the vector that can preserve the metric on a manifold at some points, or in other words, the zero Lie derivative of the metric by a vector field $\eta$: $\mathcal{L}_\eta g_{\mu\nu}=0$. Killing vectors describe infinitesimal symmetries of the metric.
+
+For example, in the world described by following metric ${\rm{d}}s^2= -c{\rm{d}}t^2+a_1(t){\rm{d}}x_1^2+a_2(t){\rm{d}}x_2^2+a_3(t){\rm{d}}x_3^2$, there are three global Killing vectors because the metric's matrix elements are not influenced by the value of $x_1, x_2, x_3$:
+\begin{equation}
+    \begin{aligned}
+    &\eta^1=(0\ 1\ 0\ 0)\\
+    &\eta^2=(0\ 0\ 1\ 0)\\
+    &\eta^3=(0\ 0\ 0\ 1).
+    \end{aligned}
+\end{equation}
+
+
+\section[Curvature Tensors]{Curvature Tensors\footnote{Most of formulas about Riemannian geometry could be found in \url{https://en.wikipedia.org/wiki/List_of_formulas_in_Riemannian_geometry}}}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{20.png}
+    \caption{Vector moves in a loop on a curved manifold}
+    \label{Vector diff}
+\end{figure}
+Looking at the figure \ref{Vector diff}, the green arrow is moving along the triangular edge. After the arrow completes its traveling (the yellow arrow), it is different from the original arrow. The difference between beginning vector $A$ and ending vector $A'$ is $\Delta A=A-A'$, and the area that the contour loop encloses is $\Delta f^{lm}$. The components of  $\Delta A$ (here we choosing a covariant vector) are
+\begin{equation}
+    \Delta A_k=\oint \delta A_k=\oint\underbrace{\Gamma^i_{kl}A_i}_{V_{kl}} {\rm{d}}x^l.
+\end{equation}
+
+By Stokes' Theorem, saying that the integral of a differential form  $\omega$ over the boundary of some orientable manifold Ω is equal to the integral of its exterior derivative ${\rm d}\omega$ over the whole of $\Omega$, we get
+\begin{equation}\label{Riemann derivation}\begin{aligned}
+    \Delta A_k&=\oint V_{kl}{\rm d}x^l\\
+    &=\frac12\int {\rm{d}}f^{lm}\left[\frac{\partial (\Gamma^i_{km}A_i)}{\partial x^l}-\frac{\partial (\Gamma^i_{kl}A_i)}{\partial x^m}\right]\\
+    &\approxeq \Delta f^{lm}\left[\frac{\partial\Gamma^i_{km}}{\partial x^l}A_i-\frac{\partial\Gamma^i_{kl}}{\partial x^m}A_i+\Gamma^i_{km}\frac{\partial A_i}{\partial x^l}-\Gamma^i_{kl}\frac{\partial A_i}{\partial x^m}\right]\\
+    &=\frac12 R^i_{klm}A_i\Delta f^{lm}.
+\end{aligned}
+\end{equation}
+
+Finally we using the symbol $R^i_{klm}$ to substitute the complex expression in the middle of equation \ref{Riemann derivation}
+\footnote{Equation \ref{Riemann derivation} is based on covariant vectors.  Here you can see contro-variant vectors can do the same job:
+
+We know $A^kB_k$ is a scalar that do not change along any contour on any manifold. so
+\begin{equation}\begin{aligned}
+        \Delta A^kB_k&=B_k\Delta A^k+A^k\Delta B_k\\
+        &=B_k\Delta A^k+A^k\left(\frac12R^i_{klm}B_i\Delta f^{lm}\right)\\
+        &=B_k\left(\Delta A^k+\frac12A^iR^k_{ilm}\Delta f^{lm}\right)\\
+        &=0.
+\end{aligned}
+\end{equation}
+So if we use contro-variant vector to determine the curvature, formula \ref{Riemann derivation} would slightly changes into
+\begin{equation}\begin{aligned}
+    \Delta A^k=-\frac12 R^k_{ilm}A^i\Delta f^{lm}.
+\end{aligned}
+\end{equation}}, called Riemann Tensor:
+\defn{The {\bfseries Riemann Curvature Tensor} is
+\begin{equation}
+    \boxed{R^i_{klm}=\frac{\partial\Gamma^i_{km}}{\partial x^l}-\frac{\partial\Gamma^i_{kl}}{\partial x^m}+\Gamma^i_{kn}\Gamma^n_{km}-\Gamma^i_{nm}\Gamma^n_{kl}},
+\end{equation}
+ which has 256 components describing the most detailed information about the manifold's curvature at every point.}
+ 
+ A Covariant Riemann Curvature tensor is simply
+ \begin{equation}
+     R_{iklm}=g_{in}R^n_{klm}.
+ \end{equation}
+
+Another way to express Riemann Tensor is
+\begin{equation}
+    A_{k;l;m}-A_{k;m;l}=\left[\nabla_l-\nabla_m\right]A_k=A_i R^i_{klm}.
+\end{equation}
+
+\subsection{Sufficient and necessary condition of Flat Spacetime}
+\thm{$R^i_{klm}=0$ is sufficient and necessary condition of the flatness of the spacetime.}
+\begin{proof}
+Necessity: \\
+If the spacetime is flat, we can find coordinates such that globally
+\begin{equation*}
+    g_{\mu\nu}=\eta_{\mu\nu},
+\end{equation*}
+so $\Gamma=g^{-1}\partial g=0$, then $\partial\Gamma=0$.\\
+So $R^i_{klm}=0$, and Riemann Tensor obey the Lorentzian transformation law,
+\begin{equation*}
+    R'^{a}_{bcd}=\Lambda^a_i\Lambda^k_b\Lambda^l_c\Lambda^m_d R^i_{klm}=0,
+\end{equation*}
+so it is always 0 no matter how we choose coordinate systems.
+
+Sufficiency:\\
+ At one point on the manifold you can choose an appropriate coordinate system to have a Minkowski spacetime.\\
+ If $R^i_{klm}=0$, then you can parallel transport the coordinate system to any other point and it also shows Minkowski spacetime. So the manifold is flat everywhere.
+\end{proof}
+
+\subsection{Properties of Riemann Curvature Tensor}
+
+\begin{itemize}
+\item Symmetry and anti-symmetry:\\
+\begin{equation}
+    R_{iklm}=R_{lmik}.
+\end{equation}
+\begin{equation}
+     R_{iklm}=- R_{kilm}=- R_{ikml}.
+\end{equation}
+Write them down and expand them to prove this!
+    \item Cyclic property:\\
+    \begin{equation}
+         R_{iklm}+ R_{imkl}+ R_{ilmk}=R_{i[klm]}=0.
+    \end{equation}
+    Easy to prove by using symmetry and anti-symmetry property.\\
+    Here the new notation $[klm]$ is an abbreviated form of  $\begin{array}{|ccc|}
+         k &l &m  \\
+         k &l &m \\
+        k &l &m\\
+    \end{array}=+klm-kml-lkm+lmk+mkl-mlk$. (The signs should stand before the tensor not the indices)\footnote{Also see Appendix \ref{riccaculus}.}. 
+    \item Bianchi identity, you have must seen it in Equation \ref{Fbianchi}:\\
+    \begin{equation}\label{Gbianchi}
+         R^i_{klm;n}+R^i_{knl;m}+R^i_{kmn;l}=R^i_{k[lm;n]}=0.
+    \end{equation}
+\end{itemize}
+
+\subsection{Contraction to Ricci Tensor and Scalar}
+\defn{The \textbf{Ricci Tensor} is the contraction of Riemann Tensor in terms of the second and the fourth indices:
+\begin{equation}
+  \begin{aligned}
+    R_{\mu\nu}&=g^{\rho\sigma}R_{\mu\rho\nu\sigma}\\
+    &=\frac{\partial\Gamma^i_{km}}{\partial x^l}-\frac{\partial\Gamma^i_{kl}}{\partial x^m}+\Gamma^i_{kn}\Gamma^n_{km}-\Gamma^i_{nm}\Gamma^n_{kl},
+  \end{aligned}
+\end{equation}
+or
+\begin{equation}\label{Ricci}
+    R_{\mu\nu}=g^{\rho\sigma}R_{\rho\mu\sigma\nu}=-g^{\rho\sigma}R_{\rho\mu\nu\sigma}=-g^{\rho\sigma}R_{\mu\rho\sigma\nu}.
+\end{equation}
+
+The \textbf{Field Scalar} or \textbf{Ricci Scalar} is the contraction of Ricci Tensor:
+\begin{equation}
+R=g^{\mu\nu}R_{\mu\nu}=g^{\mu\nu}g^{\rho\sigma}R_{\mu\rho\nu\sigma}.
+\end{equation}}
+
+
+\subsection{Another form of Bianchi Identity and Einstein Tensor}
+Contracting two indices in Bianchi Identity, and using Equation \ref{Ricci} to figure out each term, we obtain
+\be
+g^l_i\left( R^i_{klm;n}+R^i_{knl;m}+R^i_{kmn;l}\right)=R_{km;n}-R_{kn;m}+R^i_{kmn;i}=0,
+\ee
+then we can do another contraction on the equation,
+\be
+g^{km}\left(R_{km;n}-R_{kn;m}+R^i_{kmn;i}\right)=R_{;n}-R^m_{n;m}-R^i_{n;i}=0.
+\ee
+Actually this is the same form of 
+\be
+\left(R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R\right)_{;\mu}=G_{\mu\nu;\mu}=0,
+\ee
+which indicates an invariant quantity during covariant derivation. So we hereby define this invariant as the Einstein Tensor:
+\defn{\textbf{Einstein Tensor}  is
+\begin{equation}
+    G_{\mu\nu}=R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R,
+\end{equation}}
+and the trace of Einstein Tensor under 4-D spacetime is the same as a minus Ricci Scalar:
+\be
+G=g^{\mu\nu}G_{\mu\nu}=g^{\mu\nu}R_{\mu\nu}-\frac{1}{2}g^{\mu\nu}g_{\mu\nu}R=R-2R=-R.
+\ee
+
+\section[Gravitational Field Equation]{  Derivation of Gravitational Field Equation\footnote{See Weinberg \textit{Gravitation and Cosmology} section 7.1 for another derivation, a conjecture directly from the Equivalence Principle (EP).} \\ (without a cosmological constant $\Lambda$)}
+Again, like the derivation of Euler-Lagrangian Equation, the EOM in classical mechanics, the variational principle is used here to derive the EOM of Gravitational field.
+
+The total action is:
+\begin{equation}
+    S=S_g+S_m,
+\end{equation}
+where $S_m$ is the action of matter and $S_g$ is \textbf{Einstein-Hilbert Action} for the gravity, it was first proposed by Hilbert in 1915:
+\begin{equation}
+    \boxed{S_g=\frac{2}{k^2}\int R {\rm d}^4x\sqrt{-g}.}
+\end{equation}
+$k$ is a constant we will substitute later.\\
+The reason for this form is the same as the electromagnetic field action's and a free relativistic particle's in subsection \ref{freeaction} and section \ref{emaction}: requiring a reasonable scalar to form the Action\footnote{For detail reason see Landau \S 93.}. 
+
+\hrulefill
+\rem
+Here we are going to explore the variation of a metric.\\
+We make a infinitesimal coordinate transformation:$x^i\to x'^i=x'^i(x^i)$,$x'^i=x^i+\xi^i$. The metric changes in following way:
+\begin{equation}
+\begin{aligned}
+    g'^{ik}(x')&=g^{lm}\frac{\partial x'^i}{\partial x^l}\\
+    &=g^{lm}(x)\left(\delta'x+\frac{\partial\xi^i}{\partial x^l}\right)\left(\delta_m^k+\frac{\partial\xi^k}{\partial x^m}\right)\\
+    &=g'^{ik}\left(x^l\right)+\xi^k\frac{\partial g'^k}{\partial x^\alpha}+o\left(\xi^{(2)}\right).
+    \end{aligned}
+\end{equation}
+
+...
+
+\be
+\delta g_{ik}=-\nabla^k\xi^i-\nabla^i\xi^k.
+\ee
+Remember the Killing vector mentioned in subsection \ref{killing}, here we introduce the \textbf{Killing's Equation}:
+\be
+\nabla^k\xi^i+\nabla^i\xi^k=0,
+\ee
+which has the same meaning of $\mathcal{L}_{\xi}g_{ik}=0$. The Killing vectors are the solutions to the equation.
+
+\hrulefill
+
+\vspace{3mm}
+
+First, we take the variation of $S_g$ with respect to the metric. If there is no matter (vacuum), then $\delta S_g=0$, from which we can get the vacuum EOM.\\
+
+We know that $\delta g=-gg_{ik}\delta g^{ik}$,  so
+\begin{equation}
+\begin{aligned}
+\delta\sqrt{-g}&=\frac{1}{2\sqrt{-g}}(-)\delta g\\
+&=-\frac{1}{2\sqrt{-g}}(-g)g_{ik}\delta g^{ik}\\
+&=-\frac{1}{2}\sqrt{-g}g_{ik}\delta g^{ik},
+\end{aligned}
+\end{equation}
+then the variation of $S_g$ is
+\begin{equation}\begin{aligned}
+    \delta S_g
+        &=\frac{2}{k^2}\int \left(g^{ik}R_{ik}\delta\sqrt{-g}+\sqrt{-g}R_{ik}\delta g^{ik}+\sqrt{-g}g^{ik}\delta R_{ik}\right){\rm d}^4x\\
+        &=\frac{2}{k^2}\int \left[g^{ik}R_{ik}\left(-\frac{1}{2\sqrt{-g}}\delta g\right)+\sqrt{-g}R_{ik}\delta g^{ik}+\sqrt{-g}g^{ik}\delta R_{ik}\right]{\rm d}^4x\\
+        &=\frac{2}{k^2}\int \left[R\left(-\frac{\sqrt{-g}}{2}g_{ik}\delta g^{ik}\right)+\sqrt{-g}R_{ik}\delta g^{ik}+\sqrt{-g}g^{ik}\delta R_{ik}\right]{\rm d}^4x\\
+        &=\frac{2}{k^2}\int \left[\left(-\frac{1}{2}Rg_{ik}+R_{ik}\right)\delta g^{ik}+g^{ik}\delta R_{ik}\right]{\rm d}^4x\sqrt{-g}\\
+        &=\frac{2}{k^2}\int \left(G_{ik}\delta g^{ik}+g^{ik}\delta R_{ik}\right){\rm d}^4x\sqrt{-g}\\
+        &=0.
+\end{aligned}
+\end{equation}
+
+
+The second term in the result $g^{ik}\delta R_{ik}=0$ because
+
+...
+
+
+
+
+
+ The first term must be 0, then
+\begin{equation}
+    G_{\mu\nu}=0.
+\end{equation}
+This is the \textbf{Einstein Equation in vacuum}.\\
+
+Then we add external matter and energy, the matter part of action debuts:
+\begin{equation}
+    S_m=\frac1c\int{\rm d}^4x\sqrt{-g} \mathcal{L}\left(\phi, g_{ik}, \partial g_{ik}\right).
+\end{equation}
+The Lagrangian of matter is under the influence of the curvature of the manifold, i.e. the gravitation potential and its derivative. %?
+
+
+Take the variation of the matter action with respect to the metric, by integral by part we get
+\begin{equation}\begin{aligned}
+    \delta S_m 
+    &=\frac1c\int\delta\left(\mathcal{L} \sqrt{-g}\right){\rm d}^4x\\
+    &=\frac1c\int\left[\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial g^{ik}}\delta g^{ik}+\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial\left(\frac{\partial g^{ik}}{\partial x^l}\right)}\delta \left(\frac{\partial g^{ik}}{\partial x^l}\right)\right]{\rm d}^4x\\
+    &=\frac1c\int\left\{\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial g^{ik}}\delta g^{ik}+\frac{\partial}{\partial x^l}\left[\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial\left(\frac{\partial g^{ik}}{\partial x^l}\right)}\delta g^{ik}\right]- \frac{\partial}{\partial x^l}\left[\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial\left(\frac{\partial g^{ik}}{\partial x^l}\right)}\right]\right\}{\rm d}^4x\\
+    &=\frac1c\int\left\{\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial g^{ik}}+0-    \frac{\partial}{\partial x^l}\left[\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial\left(\frac{\partial g^{ik}}{\partial x^l}\right)}\right]\right\}\delta g^{ik}{\rm d}^4x\\
+    &=\frac{1}{2c}\int\sqrt{-g}T_{ik}\delta g^{ik}{\rm d}^4x.
+\end{aligned}
+\end{equation} %minus?
+
+Here we define the Energy-Momentum Tensor:
+\defn{\textbf{Energy-Momentum Tensor} or Stress-Energy Tensor, sometimes Stress-Energy-Momentum tensor is
+\begin{equation}
+        T_{\mu\nu}=\frac{2}{\sqrt{-g}}  \left[\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial g^{\mu\nu}}-    \frac{\partial}{\partial x^l}\frac{\partial\left(\sqrt{-g}\mathcal{L}_m\right)}{\partial\left(\frac{\partial g^{\mu\nu}}{\partial x^l}\right)}\right].
+\end{equation}
+It is easy to see that $T_{\mu\nu}$ a symmetric tensor since $g_{\mu\nu}$ is symmetric.}\label{emt}
+
+
+Combining with the previous results, $\delta S=\delta S_g +\delta S_m=0$ gives us the general \textbf{Einstein Equation}:
+\begin{equation}
+    \boxed{G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}.}
+\end{equation}
+The coefficient is set to be $k^2=\frac{32G\pi}{c^3}$. %?
+
+Qualitatively $G_{\mu\nu}\varpropto T_{\mu\nu}$. The equation tells us that how much has the spacetime been curved is only depending on the energy-momentum tensor.\\
+It is the EOM of the gravitational field. It is \textbf{non-linear} because intuitively the right part $T_{\mu\nu}$ contains gravitation which will affect the left part $G_{\mu\nu}$, the gravitation field itself and then the gravitation affects $T_{\mu\nu}$ again. In contrast, the EOM in Newtonian physics:  $F=ma$ which is linear.
+
+\subsection[k]{Set the coefficient $k^2=\frac{32G\pi}{c^3}$}
+
+
+\subsection{Sufficient and necessary condition of Vacuum Spacetime}
+\thm{$R=0$ and $R_{\mu\nu}=0$ is sufficient and necessary condition of $G_{\mu\nu}=0$ or $T_{\mu\nu}=0$ which means the spacetime is vacuum.
+\begin{proof}
+Sufficiency is easy to prove.\\ Necessity:  
+\begin{equation*}
+     G_{\mu\nu}=R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R=0,
+\end{equation*}
+so
+\begin{equation*}
+    R_{\mu\nu}=\frac{1}{2}g_{\mu\nu}R,
+\end{equation*}
+applying a metric to both sides, we get \begin{equation*}
+    g^{\mu\nu}R_{\mu\nu}=\frac{1}{2}g^{\mu\nu}g_{\mu\nu}R.
+\end{equation*}\\
+The contraction produces 4, $R=2R$, so $R=0$, then $R_{\mu\nu}=0$.
+\end{proof}}
+
+\section{Energy-Momentum Tensor*}
+We have known Energy-Momentum Tensor from Definition \ref{emt}.
+For generality it is just
+\be
+T_{\mu\nu}=\frac{2}{\sqrt{-g}}\frac{\delta S}{\delta g^{\mu\nu}}.
+\ee
+\subsection{Conservation Law of Energy-Momentum Tensor}
+If we only consider $\delta S_m=0$, from Killing's Equation and the symmetry of $T_{ij}$ and integral by part, we can get \footnote{In Equation \ref{EMC} the reason for $\left(T^k_i\xi^i\right)_{;k}=0$ is shown at Landau's \S 94, Equation (94.6).}
+\be\label{EMC}
+\begin{aligned}
+\delta S_m&=\frac{1}{2c}\int\sqrt{-g}T_{ik}\left(\xi^{i;k}+\xi^{k;i}\right){\rm d}^4x\\
+&=\frac{1}{c}\int\sqrt{-g}T_{ik}\xi^{i;k}{\rm d}^4x\\
+&=\frac{1}{c}\int\sqrt{-g}\left[\left(T^k_i\xi^i\right)_{;k}-T^k_{i;k}\xi^i\right]{\rm {d}}^4x\\
+&=\frac{1}{c}\int\sqrt{-g} \left(0-T^k_{i;k}\xi^i\right)\sqrt{-g}{\rm {d}}^4x\\
+&=0.
+\end{aligned}
+\ee
+For arbitrary $\xi^i$ the equation above should be satisfied so
+\be
+T^k_{i;k}=0,
+\ee
+this is the general covariant version for energy-momentum conservation.\\
+Variation respect to the metric is called diffeomorphism transformation.
+
+We can also have Weyl Transformation
+$g_{\mu\nu}\longrightarrow g_{\mu\nu}e^{2a}$ and take the variation respect of $a$. We will get
+\be
+T^\mu_{\mu}=0.
+\ee
+
+\subsection{Examples of Energy-Momentum Tensor}
+\begin{itemize}
+    \item Massive particle\\
+
+
+\item Perfect fluid\\
+\begin{equation}
+    T^i_k=(p+\epsilon)u^iu_k-p\delta^i_k.
+\end{equation}
+
+\item Dust\\
+If we consider dust, which has no pressure between each of them. This means $p=0$, then we have 
+
+\begin{equation}
+    T^i_k=\epsilon u^iu_k.
+\end{equation}
+
+
+
+\item Continuous Equation and Euler's Equation of perfect fluid
+From energy-momentum conservation\\
+
+\item Scalar field $\phi$\\
+\be
+S\left(\phi,g_{\mu\nu}\right)=\int {\rm d}^4x\sqrt{-g}\left[\frac12g_{\mu\nu}\partial_\mu\phi\partial_\nu\phi+V(\phi)\right].
+\ee
+
+
+\be
+T_{\mu\nu}= \partial_{\mu}\phi\partial_\nu\phi-g_{\mu\nu}\left[\frac12\left(\partial\phi\right)^2+V\right].
+\ee
+
+\item Electromagnetic field
+
+\be
+p=\frac13\phi
+\ee
+\end{itemize}
+
+
+
+\chapter{Solutions to Einstein Equation}
+\section{Vacuum Solutions}
+If the situation is {\bfseries vacuum}(gravitational source is out of the region you selected). Then $ T_{\mu\nu}=0$ in the region.
+\begin{equation}
+    G_{\mu\nu}=8\pi G T_{\mu\nu}=0.
+\end{equation}
+By Theorem 5.2, \begin{equation}
+    R_{\mu\nu}=0.
+\end{equation}
+By the way, the spacetime in the vacuum region with this property is called Ricci-flat Spacetime (Not flat space! Remember: Only $R_{\mu\nu\sigma\rho}=0$ can equal to flat space). 
+\begin{itemize}
+    \item One trivial solution is our old friend, Minkowski Spacetime, which is empty and flat every where and is a special case of Ricci-flat Spacetime.
+    \item There are two spacetime named after de Sitter and Anti-de Sitter spacetime. They are solutions of Einstein Equation with a positive or negative cosmological constant $\Lambda$ respectively.
+    \item If you study vacuum regions outside the ``source'', you will also get vacuum solutions. Different solutions depend on different properties of the ``source''.  In following sections we will study several solutions of this kind.
+\end{itemize}
+
+\section{Blackholes}
+It contains somewhere with some infinity physical properties. It tears the spacetime dramatically. Never be seen by human-beings, black hole is fascinating. Natural Black holes have mass $M$, spin $J$ and charge $Q$. By 'No-hair Theorem' (Wiki it!), only fixing these 3 properties can totally determine how a black hole looks like.
+ \vspace{0.35cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline \multicolumn{3}{|c|}{Types of Black holes}\\
+\hline &Without $J$&With $J$\\
+\hline Without $Q$&Swarzchild&Kerr\\
+\hline With $Q$&Reissner-Nordstrom&Kerr-Newmann\\
+\hline
+\end{tabular}
+\end{center}
+ \vspace{0.35cm}
+
+First lets begin with the simplest one, a perfectly spherical massive stationary object. See how this body influences the spacetime nearby and which situation would the ball turn into a black hole.
+
+\section{Swarzchild Metric (Spherical symmetry SO(3) and time-invariant)}
+
+This metric we are going to know differs from that we solved the Minkowski Metric under a rotating coordinates, which doesn't have mass at anywhere. The latter has matter with mass $M$ at the system center steadily or stationarily, and gravity is exist with spherical symmetry, like the gravity generated by the sun, spherical enough, or those generated by any gigantic celestial bodies with nearly empty surrounding. The metric describes the spacetime outside the center object. 
+
+It had never been worked out, even Einstein didn't either, until Swarzchild's solving 50 years after general relativity's advent.
+
+If you just want to know the application of  Swarzchild Metric, you can jump the subsection \ref{solving  Swarzchild}.
+
+\subsection[Solve the Metric out]{Solve the Metric out\footnote{For more details please refer to \url{https://en.wikipedia.org/wiki/Deriving_the_Schwarzschild_solution}.}}\label{solving Swarzchild}
+Totally there are 10 degrees of freedom in $g_{\mu\nu}$ (Symmetrical matrix with $n$ dimensions has  $\frac{(n-1)^2}{2}+n$ degrees of freedom), but we can apply other symmetries to decrease the number of free components from 10 to only 4.
+
+Because the metric has a mass center, We can use $(r,\theta,\phi,t)$ to replace the original coordinates $(t,x,y,z)$. To symplify the notation, let me just use $(1,2,3,0)$ to represent $(r,\theta,\phi,t)$ in this chapter.
+
+
+
+First, the time reversal symmetry is preserved:
+\begin{equation}
+    {\rm d}s^2(t)={\rm d}s^2(-t).
+\end{equation}
+So if we do the coordinate transformation $(r,\theta,\phi,t) \longrightarrow (r,\theta,\phi,-t)$, then $g'_{\mu0}=g_{\mu0}$. %?
+
+Recall the coordinate transformation formula of metric tensor:
+\begin{equation}
+    g'_{\mu0}=\frac{\partial x^\alpha}{\partial x'^\mu}\frac{\partial x^\beta}{\partial x'^0}g_{\alpha\beta}=\delta^\alpha_\mu\cdot - \delta^\beta_0 g_{\alpha\beta}=-g_{\mu0}=g_{\mu0}, \hspace{3mm} \mu\neq0,
+\end{equation}
+we immediately get
+\begin{equation}
+    g_{\mu0}=0,\hspace{3mm} \mu\neq0.
+\end{equation}
+
+Besides, the SO(3) symmetry allows the metric invariant under the other two reversal transformations: $(r,\theta,\phi,t) \longrightarrow (r,\theta,-\phi,t)$ and $(r,\theta,\phi,t) \longrightarrow (r,-\theta,\phi,t)$. In the same way, we get
+\begin{equation}
+\begin{aligned}
+      &g_{\mu3}=0,\hspace{3mm} \mu\neq3,\\
+      &g_{\mu2}=0,\hspace{3mm} \mu\neq2.
+\end{aligned}
+\end{equation}
+More strongly, the spacetime is static, in other words, all the metric components are independent on time $t$:
+\begin{equation}
+    \frac{\partial g_{\mu\nu}}{\partial t}=0.
+\end{equation}
+
+Now, congratulations! Only 4 non-zero components $g_{11}(r,\theta,\phi)$, $g_{22}(r,\theta,\phi)$, 
+$g_{33}(r,\theta,\phi)$, $g_{00}(r,\theta,\phi)$ are left, and they are functions of the radius $r$, the pitch angle $\theta$ and the azimuth angle $\phi$. The infinitesimal interval is 
+\begin{equation}
+\begin{aligned}
+    {\rm{d}}s^2&=g_{00}{\rm{d}}t^2+g_{11}{\rm{d}}r^2+g_{22}{\rm{d}}\theta^2+g_{33}{\rm{d}}\phi^2.
+\end{aligned}
+\end{equation} 
+
+Besides, if we fixed $\phi$ and $\theta$, ${\rm{d}}\theta^2={\rm{d}}\phi^2=0$. Then by spherical symmetry,
+\begin{equation}
+    \frac{\partial g_{00}}{\partial \theta, \phi}=\frac{\partial g_{11}}{\partial \theta, \phi}=0,
+\end{equation}
+so $g_{00}$ and $g_{11}$ are only functions of $r$. Let us just call $g_{00}$ as $B(r)$ and $g_{11}$ as $A(r)$ for simplicity, $A'$ and $B'$ are thier derivatives respect to $r$.
+
+Also, if we fixed $t$ and $r$, by spherical symmetry it is required that the metric be a 2-D spherical shell. Using knowledge in elementary geometry, the infinitesimal length on a 2-D spherical shell is  ${\rm{d}}l^2=D\cdot r^2({\rm{d}}\theta^2+\sin^2{\theta}{\rm{d}}\phi^2)$. $D$ is an constant factor due to isotropic gravitation, without loss of generality the factor can be set to 1. Thus,
+\begin{equation}
+\begin{aligned}
+      &g_{22}=r^2
+      &g_{33}=r^2\sin^2{\theta}.
+\end{aligned}
+\end{equation}
+
+
+Finally we get
+\begin{equation}
+\begin{aligned}
+    {\rm{d}}s^2
+    &=B{\rm{d}}t^2+A{\rm{d}}r^2+r^2({\rm{d}}\theta^2+\sin{\theta}{\rm{d}}\phi^2)\\
+    &=B{\rm{d}}t^2+A{\rm{d}}r^2+r^2{\rm{d}}\Omega^{(2)}.
+\end{aligned}
+\end{equation}
+We use $\Omega^{(2)}$ to refer to the solid angle.
+
+
+Next, we can utilize the vacuum condition $R_{\mu\nu}=R=0$. First we need to find out the Christoffel Symbol. Remember the equation \ref{Ch S}
+\begin{equation}
+    \Gamma^m_{kl}=\frac12 g^{mk}\left(\frac{\partial g_{ki}}{\partial x^j}+\frac{\partial g_{kj}}{\partial x^i}-\frac{\partial g_{ij}}{\partial x^k}\right),
+\end{equation}
+we can obtain 4 components of Christoffel Symbol\footnote{Every element of Christoffel Symbol and Ricci Tensor is showned in \url{https://web.stanford.edu/~oas/SI/SRGR/notes/SchwarzschildSolution.pdf}}:
+\begin{equation}
+    \begin{aligned}
+        \Gamma^1_{kl}=\begin{pmatrix}
+   \frac{A'}{2A}& 0 & 0 & 0\\
+   0 & -\frac{r}{A} & 0 & 0\\
+   0 & 0 & -\frac{r\sin^2{\theta}}{A} & 0\\
+   0 &0 & 0& -\frac{B'}{2A}
+  \end{pmatrix}\hspace{3mm}
+        &  \Gamma^3_{kl}=\begin{pmatrix}
+    0 & 0 & \frac1r & 0\\
+   0 & 0 & \cot{\theta} & 0\\
+   \frac1r & \cot{\theta} & 0 & 0\\
+   0 &0 & 0& 0
+  \end{pmatrix}\\
+        \Gamma^2_{kl}=\begin{pmatrix}
+   0& \frac1r & 0 & 0\\
+   \frac1r & 0 & 0 & 0\\
+   0 & 0 & -\sin{\theta}\cos{\theta} & 0\\
+   0 &0 & 0& 0
+  \end{pmatrix}\hspace{3mm}
+       & \Gamma^0_{kl}=\begin{pmatrix}
+   0 & 0 & 0 & \frac{B'}{2B}\\
+   0 & 0 & 0 & 0\\
+   0 & 0 & 0 & 0\\
+   \frac{B'}{2B} &0 & 0& 0
+  \end{pmatrix}.
+    \end{aligned}
+\end{equation}
+
+Using the vacuum condition
+\begin{equation}
+    R_{\mu\nu}=\frac{\partial \Gamma^l_{\mu\nu}}{\partial x^l}-\frac{\partial \Gamma^l_{\mu l}}{\partial x^\nu}+\Gamma^m_{\mu\nu}\Gamma^l_{lm}-\Gamma^m_{\mu l}\Gamma^l_{\nu m}=0,
+\end{equation}
+we get a set of equations:
+\begin{equation}0=
+\begin{aligned}\begin{cases}
+    &4A'B^2-2rB''AB+rA'B'B+rB'^2A\\
+    &rA'B+2A^2B-2AB-rB'A\\
+    &-2rB''AB+rA'B'B+rB'^2A-4B'AB,
+    \end{cases}
+\end{aligned}
+\end{equation}
+then we can start to solve A and B out.
+
+Subtract the third equation from the first equation we get
+\begin{equation}
+    A'B+B'A=0=(AB)'  \Longrightarrow \hspace{3mm} AB={\rm {const}}.\equiv k,\hspace{3mm} B=\frac{k}{A}.
+\end{equation}
+Then substitute it into the second equation we get
+\begin{equation}
+    krA'+kA(A-1)=0.
+\end{equation}
+So by solving the simple differential equation,
+\begin{equation}
+\begin{aligned}\begin{cases}
+    &A=\frac{1}{1+\frac{cc}{r}}\\
+    &B=k\left(1+\frac{cc}{r}\right), \hspace{3mm} cc=const.
+    \end{cases}
+\end{aligned}
+\end{equation}
+
+
+At last, we determine the constants by {\bfseries weak-field approximation}\footnote{Please check Landau's book Equation (87.10)$\sim$(87.12)}:
+\begin{equation}
+    \begin{aligned}\begin{cases}
+    &k=-1\\
+    &cc=-\frac{2MG}{c^2}=-2MG.
+    \end{cases}
+\end{aligned}
+\end{equation}
+here $c$ is the light speed.
+
+Finally, these are the Schwarzchild Metric and its infinitesimal interval:
+\begin{equation}
+        g_{\mu\nu}=\begin{pmatrix}
+   -\left(1-\frac{2MG}{r}\right) & 0 & 0 & 0\\
+   0 & \frac{1}{1-\frac{2MG}{r}}& 0 & 0\\
+   0 & 0 & r^2\sin^2{\theta} & 0\\
+0 &0 & 0& r^2
+  \end{pmatrix},
+\end{equation}
+
+\begin{equation}
+ \boxed{{\rm d}s^2=-\left(1-\frac{2MG}{r}\right){\rm d}t^2+\frac{1}{1-\frac{2MG}{r}}{\rm d}r^2+r^2{\rm d}\Omega^{(2)}}.
+\end{equation}
+
+\subsection{Singularity}\label{Sch Ho}
+If we take $r=r_g=2MG$ or $r=0$, the metric tensor or ${\rm d}s^2$ would not be well defined.
+
+\defn{{\bfseries Schwarzchild Radius} $r_g=2MG$.}
+
+These two positions are singularities, one is the 2-D sphere with radius $r_g$ and another is the center point. But are they real singularities or just the result from bad-choosing of coordinates?  For example, when you measure the slope of a hillside, you use $\tan{\theta}$ to substitude $\theta$, the pseudo-singularity appears when there is a cliff, $\theta=\frac{\pi}{2}$. 
+
+The Schwarzchild situation is showned in figure \ref{Sch sit}.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Sch.png}
+    \caption{The situation described by Schwarzchild Metric}
+    \label{Sch sit}
+\end{figure}
+
+\begin{itemize}
+    \item 
+The first singularity is called the \textbf{Event Singularity}, the sphere with radius $r_g$ is called the \textbf{Event Horizon}, which we will  expand in subsection \ref{Sch Co}. Here $g_{00}=0$. Event Singularity can be eliminated by lots of coordinates transformation.
+
+\hrulefill
+
+e.g. \textbf{Kruskal--Szekeres Coordinates Transformation}
+
+The Kruskal--Szekeres coordinates transformation is given below, which is seemed sophisticating.
+\begin{equation}
+\begin{aligned}\begin{cases}
+    T&=(\pm\frac{r}{2GM}\mp 1)^{\frac{1}{2}}e^{\frac{r}{4MG}\sinh{\frac{t}{4GM}}}\\
+    X&=(\pm\frac{r}{2GM}\mp 1)^{\frac{1}{2}}e^{\frac{r}{4MG}\cosh{\frac{t}{4GM}}}
+\end{cases}
+\end{aligned}.
+\end{equation}
+
+Then the interval becomes
+\begin{equation}
+      {\rm d}s^2=\frac{32G^3M^3}{r}e^{-\frac{r}{2GM}}(-{\rm d}T^2+ {\rm d}X^2)+r^2 {\rm d}\Omega^{(2)}.
+\end{equation}
+
+There is no singularity at $r=2MG$ comparing to Swarzchild's. Actually it is an analytic continuation of Swarzchild Metric. $r=0$ singularity still remains.
+
+\hrulefill
+
+You can see finding such a subtle transformation is a tough job. But the curvatures provides us with a method to measure if the gravity is strong enough at some point to produce a singularity. Remember $R=R_{\mu\nu}=0$. The only non-zero(probably) quantity is $R_{\mu\nu\sigma\rho}$.
+
+So we construct a quadratic scalar invariant called {\bfseries Kretschmann Scalar} 
+\begin{equation}
+    K=R^{\mu\nu\sigma\rho}R_{\mu\nu\sigma\rho}.
+\end{equation}
+
+This quantity at Event Singularity is $K\Big|_{r=r_g}=\frac{48G^2M^2}{r^6}\Big|_{r=r_g}=\frac{48G^2M^2}{64G^6M^6}<\infty$, so it is not a real singularity. 
+
+\item Another singularity is a point at the center of the system, which is a real physical singularity. No coordinate transformation could eliminate the center singularity. You can check that $K\Big|_{r=0}=\infty$. How to interpret a physical singularity has puzzled physicists for decades.
+\end{itemize}
+
+
+
+\subsection{Collapse and Event Horizon}\label{Sch Co}
+If there is another small testing object that is originally static is being attracted by the center object, let us calculate the equation of motion of the testing object.
+
+Lets first see the action of a massive particle
+\begin{equation}
+    S=-m\int {\rm d}s=-m\int\sqrt{g_{\mu\nu} \dot x^\mu \dot x^\nu}{\rm d}\tau,
+\end{equation}
+then
+\begin{equation}
+    \frac{\partial L}{\partial \dot x^\mu}=-\frac{mg_{\mu\nu}\dot x^\nu}{\sqrt{\dot x^2}}.
+\end{equation}
+
+Particularly, following quantity is conserved, because the Lagrangian isn't a function of $t$ and according to the Euler-Lagrangian Equation,
+\begin{equation}
+    \frac{\partial L}{\partial \dot t}=-\frac{mg_{00}\dot t}{\sqrt{\dot x^2}}=const.=E.
+\end{equation}
+If we set $\sqrt{\dot x^2}=1$, then
+\begin{equation}
+    \dot t=-\frac{E}{m}\frac{1}{1-\frac{r_g}{r}}=\frac{e}{1-\frac{r_g}{r}}.
+\end{equation}
+
+Also, from ${\rm d}s^2/{\rm d}\tau^2=1$, we get
+\begin{equation}
+    g_{00}\dot t^2+g_{rr}\dot r^2=1,
+\end{equation}
+then
+\begin{equation}
+    e^2=\dot r^2+1-\frac{r_g}{r}.
+\end{equation}
+For $r \to \infty$ and $\dot r=0$, the constant $e=1$, so
+
+\begin{equation}
+    \frac{{\rm d}r}{{\rm d}\tau}=\pm \sqrt{\frac{r_g}{r}}.
+\end{equation}
+
+If it requires infinite proper time duration for the testing object to reach the center singularity, then we do not need to care about the singularity (In other words, it is geodesic complete). However, the fact is frustrating. Lets calculating the proper time duration:
+\be
+\int{\rm d}\tau=-\int\frac{{\rm d}r}{\sqrt{\frac{r_g}{r}}},
+\ee
+if we set $r(\tau=0)=r_0$, after the integration, 
+\be
+\tau(r)=\frac23\left(\frac{{r_0}^\frac32}{{r_g}^\frac12}-\frac{{r}^\frac32}{{r_g}^\frac12}\right).
+\ee
+For a object started at event horizon, after $\tau=\frac23\frac{r_g}{c}=\frac{4}{3}\frac{MG}{C^3}$ of time it reached the center. For a blackhole with solar mass $M_\odot$,  $\tau\sim10^{-6}{\rm s}$ and for a typical galactic center blackhole $M=10^{10}M_\odot$, $\tau\sim10^4 {\rm s}$. (Actually not only the particle, but the whole reference frame is collapsing. There is no way to establish a rigid reference frame inside the horizon.)\\
+
+
+
+Lets then draw the lightcones in the \textbf{Lemeitre $\tau-R$ diagram} in Figure \ref{Sch diagram},  $R$ is defined by \textbf{Lemeitre Transformation}
+\begin{equation}
+\left\{\begin{aligned}
+     {\rm d}R&={\rm d}t+\sqrt{\frac{r}{r_g}}\frac{{\rm d}r}{1-\frac{r_g}{r}}\\
+     {\rm d}\tau&={\rm d}t+\sqrt{\frac{r_g}{r}}\frac{{\rm d}r}{1-\frac{r_g}{r}}.
+\end{aligned}\right.
+\end{equation}
+
+\begin{equation}
+    {\rm d}s^2=-{\rm d}\tau^2+\frac{r_g}{r}{\rm d}R^2+r^2{\rm d}\Omega^{(2)}.
+\end{equation}
+
+For $r=const.$, they are lines with $45$ degrees slope in the diagram. Especially the line represents $r=0$, it crosses the origin.\\ 
+The slope of those lightcones' slants can be solved from ${\rm d}s^2=0$:
+\begin{equation}
+    \frac{{\rm d}\tau}{{\rm d}R}=\pm \sqrt{\frac{r_g}{r}}.
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{19.png}
+    \caption{How things move in Schwarzchild spacetime}
+    \label{Sch diagram}
+\end{figure}
+
+From Figure \ref{Sch diagram} you can see the object could only escape (increase $r$) outside the Schwarzchild radius. Inside, the object falls into the center singularity inevitably, even light can not avoid being attracted into the center. Observers far away can only see event happened outside the Schwarzchild radius. This is the reason that people call the spherical shell with $r_g$ radius `{\bfseries Event Horizon}', which was elaborated in subsection \ref{Sch Ho}.
+
+\hrulefill
+
+\rem
+
+There exists some ways to derive Schwarzchild Radius by Newtonian Method. The subject is mainly about using light speed to substitute the classical escape velocity $v=\sqrt{\frac{2MG}{r}}$ to see the minimum escaping radius. But the problem is if there is an object with velocity of light speed, then Newtonian framework will not valid from the very beginning. Also, the escaping trajectory is a parabola but not a orbit limited in the horizon spherical shell. \\
+Here is an typical wrong example: \url{https://arxiv.org/ftp/gr-qc/papers/0611/0611104.pdf}\\
+Anyway, you can use this method as a tip to remember Schwarzchild Radius since there is indeed no light can escapes from inside of Schwarzchild Radius. 
+
+\hrulefill
+
+
+
+
+\subsection{Time and Gravitational RedShift}\label{Schwred}
+Assume there is an object traveling towards the mass center outside of Schwarzchild radius $r>r_g$. From Schwarzchild metric, we now know the object's proper time is
+\begin{equation}
+    {\rm d}\tau=\sqrt{-g_{00}}{\rm d}t=\sqrt{1-\frac{2MG}{r}}{\rm d}t<{\rm d}t.
+\end{equation} 
+Although the proper time of the object remains its original elapsing rate in its view, the time elapses more slowly in the views of observers who is far away from the `Event Horizon'.  More approaching to `Event Horizon' the object is,   slower the movement is.
+
+\hrulefill
+
+\rem{Remember that in special relativity, the time dilation is relative. Two observers will both have the version that the other one's time slows down (Each frame is inertial, flat respect to the other). However, in general relativity, the time-slowed guy will see the other guy with normal time pace (Two frames are not equivalent, because they suffer different gravity. Meanwhile, you should recognize that this is similar to the situation in the twin paradox.)}
+
+\hrulefill
+
+Naturally, a beam of light with frequency $\omega_0$ (measured in light source's proper time) will decrease its frequency in the views of observers far away from the `Event Horizon'.   Closer to the `Event Horizon', lower the frequency is.
+\begin{equation}
+    \omega=\frac{ \omega_0}{\sqrt{-g_{00}}}> \omega_0.
+\end{equation}
+Lower frequency means {\bfseries Redshift} happened, and this is only attributed to gravitational effect rather than Doppler Effect. We call it Gravitational Redshift. So we will not only observe the object moving slowlier but also redder, finally be frozed and disappear in a dark shadow (redshift sequence: $\gamma$-ray, X-ray, ultraviolet, blue, red, then infrared, eventually radio wave...) on the `Event Horizon'. 
+
+\subsection{Penrose Diagram}
+To show the Schwarzchild spacetime of the whole universe seems impossible because we don't have an infinitely large paper. However, we can pull back the ``infinities'' to the finite scale we can manage by coordinates transformation.\\
+In $t-r$ coordinate, the diagram can be devided in following region:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Infinities.png}
+    \caption{Infinities}
+    \label{fig:my_label}
+\end{figure}
+\begin{itemize}
+    \item {$I^+\equiv$ "future time-like infinity": $t\to\infty$ and $r\to{\rm{const.}}$.}
+    \item{$I^-\equiv$ "past time-like infinity": $t\to-\infty$ and $r\to{\rm{const.}}$.}
+    \item{$I^0\equiv$ "space-like infinity": $t\to{\rm{const.}}$ and $r\to\infty$.}
+    \item{$\mathcal{J^+}\equiv$ "future null infinity": $t+r\to+\infty$ and $t-r\to$ finite.}
+    \item{$\mathcal{J^-\equiv}$ "past null infinity": $t+r\to{\rm{const.}}$ and $t-r\to-\infty$.}
+\end{itemize}
+
+
+If we choose the singature $(-+++)$, for spherical coordinate we have 
+\begin{equation}
+    {\rm{d}}s^2=-{\rm{d}}t^2+{\rm{d}}r^2+r^2(\sin^\theta{\rm{d}}\phi^2+{\rm{d}}\theta^2).
+\end{equation}
+If we coordinate transform the diagram from $(t,r,\theta,\phi)$ into $(\phi,\xi,\theta,\phi)$, where 
+\begin{equation}
+    \begin{aligned}
+        t+r&=\tan[\frac{1}{2}(\phi+\xi)]\\
+        t-r&=\tan[\frac{1}{2}(\phi-\xi)],
+    \end{aligned}
+\end{equation}
+we can get the metric 
+\begin{equation}
+    \begin{aligned}
+        {\rm{d}}s^2&=\frac{-{\rm{d}}\phi^2+{\rm{d}}\xi^2}{4\cos^2[\frac{1}{2}(\phi+\xi)]\cos^2[\frac{1}{2}(\phi-\xi)]}\\
+        &=\Omega^2(-{\rm{d}}\phi^2+{\rm{d}}\xi^2)+r^2{\rm{d}}\Omega^{(2)}.
+    \end{aligned}
+\end{equation}
+Here we have 
+\begin{itemize}
+    \item {$I^+$: $\xi=0,\phi=\pi$.}
+    \item {$I^-$: $\xi=0,\phi=-\pi$.}
+    \item {$I^0$: $\xi=\pi,\phi=0$.}
+    \item {$\mathcal{J}^+$: $\phi=\pi-\xi$.}
+\end{itemize}
+Then the diagram becomes \textbf{Penrose Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{FlatPen.png}
+    \caption{Penrose diagram for Minkowski spacetime}
+    \label{flatpen}
+\end{figure}
+
+Here we can see we avoid the infinity $\infty$ appearing in the diagram using the coordinate transformation.
+\subsubsection{Penrose Diagram for Schwarzschild Spacetime}
+Schwarzschild Spacetime in Kruskal-Szekeres coordinate can be written as 
+\begin{equation}
+    {\rm{d}}s^2=\frac{32\pi M^2}{r}e^{\frac{-r}{2M}}(-{\rm{d}}v^2+{\rm{d}}u^2)+r^2{\rm{d}}\Omega^{(2)}.
+\end{equation}
+In $u-v$ diagram, the spacetime looks like 
+%% Diagram 3
+Here we use coordinate transformation to get Penrose Diagram for Schwarzschild case: 
+\begin{equation}
+    \begin{aligned}
+        u+v&=\tan\frac{1}{2}(\phi+\xi)\\
+        u-v&=\tan\frac{1}{2}(\phi-\xi).
+    \end{aligned}
+\end{equation}
+The metric becomes 
+\begin{equation}
+    \rm{d}s^2=\frac{32\pi^2e^{\frac{-r}{2M}}}{r}\frac{(-\rm{d}\phi^2+{\rm{d}\xi^2)}}{4\cos^2[\frac{1}{2}(\phi+\xi)]\cos^2[\frac{1}{2}(\phi-\xi)]}.
+\end{equation}
+Here we need to find the position of horizon and singularity of Schwarzschild spacetime in Penrose diagram.\\
+\begin{itemize}
+    \item {\fbox{$r=2\pi$}$\to$ $\phi=-\xi$ or $\phi=\xi$}
+    \item{\fbox{$r=0$}$\to$ $\phi=\frac{\pi}{2}$ or $\phi=\frac{-\pi}{2}$. }
+\end{itemize}
+
+
+
+The Penrose diagram for Schwarzschild spacetime is shown in Figure \ref{SchPen}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{SchPen.png}
+    \caption{The Penrose diagram for Schwarzschild}
+    \label{SchPen}
+\end{figure}
+
+For collapsing Schwarzschild black hole, we can draw the Penrose diagram as Figure \ref{SPen}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{SPen.jpg}
+    \caption{The Penrose diagram for Collapsing Schwarzschild Black Hole }
+    \label{SPen}
+\end{figure}
+The figure is composed of two Penrose diagrams. Before the matter collapsed into a black hole, the spacetime is Minkowski. After the collapsing, spacetime would be Schwarzschild. In figure \ref{SPen} we can see below the orange line, which is light shell, the spacetime is Minkowski. Above the orange line, the spacetime is Schwarzschild. 
+
+
+
+
+
+
+
+
+
+\subsection{How Massive Particle Moves}
+\subsection{How Light is Bend}
+Assume the light action is 
+\be
+S=-\int\left(\frac12\frac{\dot{x}^2}{e}+\frac12 m^2 e\right){\rm d}\tau.
+\ee\label{light action}
+$e$ is a Lagrangian multiplier.
+
+Taking the variation in  terms of $e$,
+\be
+\delta_e S=-\int\delta e \left(-\frac12\frac{\dot{x}^2}{e^2}+\frac12m^2\right){\rm d}\tau =0.
+\ee
+Then 
+\be
+e^2=\frac{\dot{x}^2}{m^2}.
+\ee
+
+
+After taking $m=0$, The light's action from Equation \ref{light action} becomes 
+\be
+S=\int\mathcal{L}{\rm d}\lambda=\int -\frac12e^{-1}g_{\mu\nu}\frac{{\rm d}x^\mu}{{\rm d}\lambda}\frac{{\rm d}x^\nu}{{\rm d}\lambda}{\rm d}\lambda,
+\ee
+the Lagrangian in explicit form is 
+\be
+\mathcal{L}=-\frac{1}{2e}\left[\left(1-\frac{2M}{r}\right)\dot{t}^2-\frac{\dot{r}^2}{1-\frac{2M}{r}}-r^2\dot{\phi}^2\right].
+\ee
+
+$e$ transforms in sort of way:
+\be
+e'^{-1}(\lambda')=\Lambda e^{-1}(\lambda)
+\ee
+
+Previously, $\delta_e S=0$ leads to $-\frac{\dot{x}^2}{2e^2}=0$, which is equivalent to ${\rm d}s^2=0$ for light.\\
+
+
+Using the conservation law, $\frac{\partial\mathcal{L}}{\partial\dot{t}}=const.$ and $\frac{\partial\mathcal{L}}{\partial\dot{\phi}}=const.$ we get
+\begin{equation}
+    \left\{\begin{aligned}
+        \bigg( &1-\frac{2M}{r}\bigg)\dot{t}=\frac{E}{M_p}=\epsilon\\
+        &r^2\dot{\phi}=\frac{\tilde{J}}{M_p}=J,
+    \end{aligned}\right.
+\end{equation}
+after we setting the gauge
+\be
+e=\frac{1}{M_p}.
+\ee
+
+We replace $\dot{t}$ and $\dot{\phi}$ in the Lagragian by $\epsilon$ and $J$.
+\be
+\mathcal{L}=\frac12\frac{\epsilon^2}{(1-2M/r)}-\frac12\frac{\cdot{r}^2}{(1-2M/r)}-\frac12\frac{J^2}{r^2}.
+\ee
+Because we have ${\rm{d}}s=0$ for light, we have 
+\begin{equation}
+    -\dot{r}+\epsilon^2-(1-\frac{2M}{r})\frac{J^2}{r^2}=0.
+\end{equation}
+If we do the coordinate transformation $\lambda\to\lambda'$, we have 
+\begin{equation}
+    (1-\frac{2M}{r})\frac{{\rm{d}}t}{{\rm{}d}\lambda'}=(1-\frac{2M}{r})\frac{{\rm{d}}t}{{\rm{d}}\lambda}\frac{{\rm{d}}\lambda}{{\rm{d}}\lambda'}=(1-\frac{2M}{r})\frac{{\rm{d}}t}{{\rm{d}}\lambda}\frac{1}{\alpha}=E.
+\end{equation}
+Here $1/\alpha=\epsilon$, we can set $\epsilon=1$. We can also define $J=b$, then the equation above can be derived as 
+\begin{equation}
+\boxed{    \dot{r}+(1-\frac{2M}{r})\frac{b^2}{r^2}=1.}
+\end{equation}
+with 
+\begin{equation}
+E=1
+\end{equation}
+and 
+\begin{equation}
+    \frac{r^2{\rm{d}}\phi}{{\rm{d}}r}=-b.
+\end{equation}
+These three equation respectively indicate:
+\begin{itemize}
+    \item {When $r\to\infty$, $\dot{r}=1$.}\\
+    \item{$\frac{{\rm{d}}t}{{\rm{d}}\lambda}=1$.}\\
+    \item{${\rm{d}}\phi=\frac{b}{r^2}{\rm{d}}r$.}
+\end{itemize}
+By integrating the final equation we get 
+\be
+\phi=\frac br.
+\ee
+While $b$ is a small number, we can approximately consider $\phi\simeq\sin\phi$. Then we have 
+\begin{equation}
+    b=r\sin\phi.
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\linewidth]{impact.png}
+    \caption{Impact factor}
+    \label{impact}
+\end{figure}
+As what is shown in the picture, $b$ is the \textbf{Impact Factor} in scattering theory. 
+
+
+
+
+\section[Kerr Metric]{Kerr Metric\footnote{For more detail about Kerr Metric you can refer to \url{https://arxiv.org/pdf/0706.0622v3.pdf##page=35}}}
+The Swartzchild Metric is designed for a spherical stationary object. However,in nature, there is few things locomote without angular momentum. How to deal a object with angular momentum? Then here comes the Kerr Metric. We often call the black holes' angular momentum `spin'.\\ 
+(Notice: Whilst the mass has a standard Newtonian interpretation, for black holes it is nonsense to talk about the revolve or rotation. Because scientists do not and hitherto can not care the inter structure of black holes. The spin that black holes possess is simply considered as an intrinsic property succeed from the angular momentum of the original star.) 
+
+The system has an angular momentum $J$, and an angular momentum density  $a=\frac{J}{M}$. $a$ has the same unit as length because $c=1$ (Remember angular momentum has a unit of $\rm{kg\cdot m^2\cdot s^{-1}}$ under natural units).\\
+
+The metric is too complicated to solve and even very difficult to check the correctness in Einstein Equation, we can start directly:
+\begin{equation}
+\boxed{
+    {\rm d}s^2=-\left(1-\frac{r_g r}{\rho^2}\right){\rm d}t^2+\frac{\rho^2}{\Delta}{\rm d}r^2+\rho^2{\rm d}\theta^2+\left(r^2+a^2+\frac{r_gra^2}{\rho^2}\sin^2{\theta}\right)\sin^2{\theta}{\rm d}\phi^2-\frac{r_gra\sin^2{\theta}}{\rho^2}{\rm d}\phi{\rm d}t}.
+\end{equation}
+Here $\Delta =r^2-rr_g+a^2$ and $\rho^2=r^2+a^2\cos^2{\theta}$. 
+
+You can find from the last item of the interval that $g_{\phi t}\neq 0$ which means $g_{\mu\nu}$ is not diagonal. 
+
+If $a=0$, then Kerr Metric degenerate to Swarchild's, which is reasonable because $a$ represents the spin.
+
+If $M\rightarrow 0$,  $r_g\rightarrow 0$. the metric reasonably approaches to Minkowski Metric.
+\begin{equation}
+\label{kerrminkowski}
+\begin{aligned}
+    {\rm d}s^2\rightarrow&-{\rm d}t^2+\frac{\rho^2}{r^2+a^2}{\rm d}r^2+\rho^2{\rm d}\theta^2+\left(r^2+a^2\right)\sin^2{\theta}{\rm d}\phi^2\\
+    =&-{\rm d}t^2+{\rm d}x^2+{\rm d}y^2+{\rm d}z^2.\\
+    =&\eta_{\mu\nu}{\rm d}x^\mu{\rm d}x^\nu
+\end{aligned}.
+\end{equation}
+
+Transformation to Cartesian coordinates are represented below
+\begin{equation}
+\label{kerrcartesian}
+    \begin{aligned}
+    \begin{cases}
+    t&=t\\
+    x&=\sqrt{r^2+a^2}\sin{\theta}\cos{\phi}\\
+    y&=\sqrt{r^2+a^2}\sin{\theta}\sin{\phi}\\
+    z&=r\cos{\theta}
+    \end{cases}
+\end{aligned},
+\end{equation}
+which is the proper coordinates transformation that satisfies equation (\ref{kerrminkowski}). You can find that the radius $r$ is streched when the spin exists.
+
+\subsection{Singularity and horizons}
+If we take $\rho=0$ or $\Delta=0$, interval ${\rm d}s^2$ would not be well defined. 
+
+\begin{itemize}
+    \item If
+\begin{equation}
+    \rho^2=r^2+a^2\cos^2{\theta}=0.
+\end{equation}
+It is true when $r=0$ and $\theta=\frac{\pi}{2}$. Then equation (\ref{kerrcartesian}) turns into
+
+\begin{equation}
+    \begin{aligned}\begin{cases}
+    x&=a\cos{\phi}\\
+    y&=a\sin{\phi}\\
+    z&=0
+    \end{cases},
+\end{aligned}
+\end{equation}
+
+ which means there is a ring shaped singularity:
+\begin{equation}
+    x^2+y^2=a^2.
+\end{equation}
+The scalar $R^{\mu\nu\sigma\rho}R_{\mu\nu\sigma\rho}\Big|_{\rho=0}\simeq\frac{1}{\rho^6}\Big|_{\rho=0}=\infty$. So the ring is a real singularity.
+
+\item If
+\begin{equation}
+    \Delta =r^2-rr_g+a^2=0,
+\end{equation}
+then
+\begin{equation}
+    r_\pm=\frac{r_g}2\pm \sqrt{\left(\frac{r_g}2\right)^2-a^2}.
+\end{equation}
+
+
+\item If $g_{00}=0$,
+\begin{equation}
+r^2-rr_g+a^2\cos{\theta}=0,
+\end{equation}
+then
+\begin{equation}
+    r_{0\pm}=\frac{r_g}2\pm \sqrt{\left(\frac{r_g}2\right)^2-a^2\cos{\theta}}.
+\end{equation}
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{Kerr.png}
+    \caption{The situation described by Kerr Metric}
+    \label{Kerr}
+\end{figure}
+
+
+\subsection{Frame-dragging}
+In ergosphere,  ?????????????
+\begin{equation}
+        {\rm d}s^2=-\left(g_{00}-\frac{g_{03}^2}{g_{33}}\right){\rm d}t^2+g_{11}{\rm d}r^2+g_{22}{\rm d}\theta^2+g_{33}{\rm d}\phi^2.
+\end{equation}
+\begin{itemize} 
+    \item If $r, \theta, \phi=const.$ then ${\rm d}s^2<0$, this is space-like interval.
+    \item For a particle the interval should be time-like, ${\rm d}s^2>0$, then if $r, \theta=const.$ we get the angular velocity
+    \begin{equation}
+        \frac{{\rm d}\phi}{{\rm d}t}=-\frac{g_{03}}{g_{33}}.
+    \end{equation}
+    This means that the particle can not be at rest in angular direction, the spacetime itself is rotating (being dragged).
+\end{itemize}
+
+\subsection{Energy Extraction (Penrose Process)}
+Typically, a particle with 4-momentum $P_\mu=m_0 u_\mu$ has a energy $E_0=P_0=m_0 g_{0i}u^i$.
+\begin{equation}\begin{aligned}
+    E_0&=P_0=m_0 g_{0i}u^i\\
+    &=m_0\left(g_{00}u^0+g_{03}u^3\right)\\
+    &=m_0\left(g_{00}\frac{{\rm d}t}{{\rm d}s}+g_{03}\frac{{\rm d}\phi}{{\rm d}s}\right).
+\end{aligned}
+\end{equation}
+In the ergosphere, $g_{00}<0$ and $g_{03}>0$, then negative energy $E_0<0$ is possible.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{energyextraction.png}
+    \caption{Energy extraction}
+    \label{energyextraction}
+\end{figure}
+In the picture, we have a pair of particles with total energy $E=E_1+E_2=-|E_1|+E_2$ in the ergosphere and particle 1 has a negative energy $E_1<0$. The negative-energized particle  cannot live outside the ergosphere, so the only possibility is you get particle 2 with energy $E_2=E+|E_1|$ and meanwhile particle 1 falls into the blackhole. You extract $|E_1|$ from the rotation energy from the Kerr blackhole.
+
+
+\subsection{Closed Timelike Curve (CTC)}
+\begin{equation}
+\left\{\begin{aligned}
+    r&=const.<0\\
+    \theta&=\frac\pi2\\
+    t&=const.\\
+    {\rm d}s^2&=-\left(r^2+a^2+\frac{2ma^2}{r}\right){\rm d}\phi^2.
+    \end{aligned}\right.
+\end{equation}
+If $r$ is small and negative, then
+\begin{equation}
+   -\frac{2ma^2}{r}{\rm d}\phi^2>0
+\end{equation}
+is possible. $\phi$ is time-like now. So when $\phi\in[0, 2\pi]$, it is a  Closed Timelike Curve.
+
+
+\subsection{Penrose Diagram}
+The Penrose Diagram for Kerr Metric is as following 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{KerrPen.jpg}
+    \caption{Penrose Diagram for Kerr Metric }
+    
+\end{figure}
+
+\section{Reissner-Nordstrom Metric}
+Let's study the situation with electrical charge but without spin.
+Unlike Swarchild's and Kerr's, the charge drive the right side of Einstein equation non-zero.
+\begin{equation}
+   \begin{cases}
+    G_{\mu\nu}=8\pi GT_{\mu\nu}=2(F_{ul}F^\rho_\nu-\frac{1}{4}g_{\mu\nu}F_{\rho\nu}F^{\rho\nu}).\\
+    \nabla_\mu F^{\mu\nu}=0
+    \end{cases}
+\end{equation}
+
+Solved
+\begin{equation}
+    \boxed{{\rm d}s^2=(1-\frac{r_g}{r}+\frac{Q^2G}{r^2}){\rm d}t^2-\frac{1}{(1-\frac{2M}{r}+\frac{Q^2G}{r^2})}{\rm d}r^2+r^2{\rm d}\Omega^{(2)}}.
+\end{equation}
+
+Obviously, if $Q\rightarrow 0$, the interval degenerates to Swarzchild's.\\
+
+To find out the singularity, we let $g_{00}=g_{11}^{-1}=0$, and we can get 
+\begin{equation}
+    1-\frac{2M}{r}+\frac{Q^2}{r^2}=0.
+\end{equation}
+Solve this equation, we get two singularity 
+\begin{equation}
+   r_{\pm}=M\pm\sqrt{M^2-Q^2}.
+\end{equation}
+
+\begin{itemize}
+    \item {If $M=Q$, we can get the external BH: $r=M$. }
+    \item{If $M<|Q|$, we can get a naked singularity. }
+\end{itemize}
+
+
+
+\subsection{Penrose Diagram}
+Penrose Diagram for Reissner-Nordstrom Metric is as following 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\linewidth]{NRPen.jpg}
+    \caption{Penrose Diagram for Reissner-Nordstrom Metric }
+    
+\end{figure}
+
+Setting $M=Q$, that is $r_+=r_-=M$, we can get the Penrose Diagram for external R-N Black Hole
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.3\linewidth]{NRBHPen.jpg}
+    \caption{Penrose Diagram for External Reissner-Nordstrom Black Hole }
+    
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+\chapter{ The Spacetime's Perturbation\ ------\ the Gravitational Waves}
+Since GW150914 (means Gravitational Wave Event on 14 Sep. 2015, the picture shown on cover) first discovered the Gravitational Waves, this topic was going to be under the spotlight.
+
+\section{Perturbation on Vacuum}
+In vacuum, $R_{\mu\nu}=0$.
+Assume a \textbf{Linear Perturbation} $|h_{\mu\nu}|<<1$ on Minkowski Metric $\eta_{\mu\nu}$,
+\begin{equation}
+    g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}.
+\end{equation}
+For symplify the calculation, let
+\begin{equation}
+    \bar{h}_{\mu\nu}\equiv h_{\mu\nu}-\frac12 h \eta_{\mu\nu},
+\end{equation}\\
+here $h$ is the contraction of $h_{\mu\nu}$, and the $\bar{h}$ is the contraction of $\bar{h}_{\mu\nu}$,
+\begin{equation}
+    \bar{h}=\eta^{\mu\nu}\bar{h}_{\mu\nu}=\eta^{\mu\nu}h_{\mu\nu}-\frac12 h \eta^{\mu\nu}\eta_{\mu\nu}=h-2h=-h.
+\end{equation}\\
+Now by using this result,
+\begin{equation}
+    \bar{h}_{\mu\nu}=h_{\mu\nu}+\frac12 \bar{h} \eta_{\mu\nu},
+\end{equation}\\
+we get 
+\begin{equation}
+   \boxed{ h_{\mu\nu}= \bar{h}_{\mu\nu}-\frac12 \bar{h} \eta_{\mu\nu}.}
+\end{equation}
+In the following part, we will find out the symmetry of $h_{\mu\nu}$ by calculating the Einstein tensor of $g_{\mu\nu}$. Please note that because the space-time is flat, we can be sure that $G_{\mu\nu}=0$.\\
+To get Einstein tensor, we should firstly find out Ricci tensor and Ricci scalar. For $g_{\mu\nu}$, the Ricci tensor is 
+
+\begin{equation}
+R_{km}=g^{il}\frac{1}{2}(\frac{\partial^2g_{im}}{\partial x^k\partial x^l}+\frac{\partial^2g_{kl}}{\partial x^i\partial x^m}-\frac{\partial^2g_{il}}{\partial x^k\partial x^m}-\frac{\partial^2g_{km}}{\partial x^i\partial x^l})+g^{il}g_{mp}(\Gamma^m_{kl}\Gamma^p_{im}-\Gamma^m_{km}\Gamma^p_{il}).
+\end{equation}
+Take in $g_{ik}=\eta_{ik}+h_{ik}$, notice that $h_{ik}$ is small amount and for $\eta_{ik}$ we have $R_{ik}=0$. Then we get 
+\begin{equation}
+\begin{aligned}
+R_{km}&=\frac{1}{2}\eta^{il}(\frac{\partial^2h_{im}}{\partial x^k\partial x^l}+\frac{\partial^2h_{kl}}{\partial x^i\partial x^m}-\frac{\partial^2h_{il}}{\partial x^k\partial x^m}-\frac{\partial^2h_{km}}{\partial x^i\partial x^l})+O(h^2)\\
+&=\frac{1}{2}(\frac{\partial^2h^l_m}{\partial x^k\partial x_l}+\frac{\partial^2h^i_k}{\partial x^i\partial x_m}-\frac{\partial^2h}{\partial x^k\partial x_m}-\Box h_{km})+O(h^2)\\
+&=\frac{1}{2}(\bar{h}^l_{m,lk}+\bar{h}^l_{k,lm}-\Box\bar{h}_{km}+\frac{1}{2}\Box\bar{h}\eta_{km}+O(h^2)). 
+\end{aligned}
+\end{equation}
+
+Easily we can get Ricci scalar
+\begin{equation}
+\begin{aligned}
+R&=\eta^{km}R_{km}\\
+   &=\frac{1}{2}(2\bar{h}^{lm}_{lm}-\Box\bar{h}-2\Box\bar{h})\\
+   &=\bar{h}^{lm}_{lm}+\frac{1}{2}\Box\bar{h}.
+\end{aligned}
+\end{equation}
+Therefore, Einstein tensor is 
+\begin{equation}
+G_{km}=R_{km}-\frac{1}{2}g_{km}R=-\frac{1}{2}\Box\bar{h}_{km}=0.
+\end{equation}
+
+
+This equation impose a gauge $\partial_k\bar{h}^{ki}=0$, or it can be also written as $\partial _kh^{ki}-\frac{1}{2}\partial^ih=0$. Because $h_{ik}$ is small amount, it will be small amount in any reference frame. Now we try to do a reference transformation. If we change $x^i$ into $x'^i=x^i+\xi_i$ , where $\xi_i$ is also small amount, then $h_{ik}$ change into:
+\begin{equation}
+h'_{ik}=h_{ik}+\frac{\partial\xi_i}{\partial x_k}+\frac{\partial \xi_k}{\partial x_i},
+\end{equation}
+\begin{equation}
+h'=\eta^{ik}h'_{ik}=h+2\frac{\partial\xi_i}{\partial x_k}.
+\end{equation}
+As a result, 
+\begin{equation}
+\partial_kh'^{ki}-\frac{1}{2}\partial^ih'=\partial_kh^{ki}-\frac{1}{2}\partial^ih+\Box\xi^i=0,
+\end{equation}
+\begin{equation}
+\Box h'_{ik}=\Box h_{ik}+\frac{\partial\Box\xi_\nu}{\partial x_\mu}+\frac{\partial \Box\xi_\nu}{\partial x_\mu}.
+\end{equation}
+
+If we choose
+\begin{equation}
+\Box\xi^i=0.
+\end{equation}
+Take it into the equation above, we get 
+\begin{equation}
+\partial_ih'^{ik}-\frac{1}{2}\partial^ih'=0,
+\end{equation}
+\begin{equation}
+    \boxed{\Box'{h}_{ik}=0,}
+\end{equation}
+which is a general wave equation, representing that magnetic field travel at the speed of light in vacuum. 
+
+
+
+
+
+
+
+
+\subsection{TT Gauge}
+\section{GW with Sources}
+Now $T_{\mu\nu}\neq0$.
+\begin{equation}
+    G_{\mu\nu}=-\frac12\Box \bar{h}_{\mu\nu}=8\pi G_N T^{\mu\nu}.
+\end{equation}
+\subsection{GW from 2 Black holes}
+
+
+
+
+\chapter{Cosmology}
+Assume the metric is depending on time,
+\begin{equation}
+    {\rm d}s^2={\rm d}t^2+a^2(t)\left[\frac{{\rm d}r^2}{1-\kappa r^2}+r^2{\rm d}\Omega^{(2)}\right].
+\end{equation}
+At any time, the spacetime is a sphere.\\
+
+
+\bfseries{Homogeneous and Isotropic:}
+
+\section{Perfect Fluid}
+\begin{equation}
+    \dot\rho+\frac{3\dot a}{a}\left(P+\rho\right)=0.
+\end{equation}
+\begin{itemize}
+    \item Dust
+    
+    \item Radiation
+\end{itemize}
+
+\subsection{Friedman Equations}
+
+\defn{Hubble Constant 
+\begin{equation}
+    H=\frac{\dot a}{a}.
+\end{equation}}
+
+
+Set 
+\begin{equation}
+    \Omega=\frac{8\pi G\rho}{3H^2}=\frac{\rho}{\rho_{critical}},
+\end{equation}
+the Friedman Equation can written into 
+\begin{equation}
+    \Omega-1=\frac{\kappa^2}{H^2a^3}.
+\end{equation}
+\begin{itemize}
+    \item If $\rho<\rho_{critical}$, $\kappa<0$;
+    \item If $\rho=\rho_{critical}$, $\kappa=0$;
+    \item If $\rho>\rho_{critical}$, $\kappa>0$;
+\end{itemize}
+Now $H\approx70{\rm km/s}/{\rm Mpc}$.
+\section[Cosmological constant]{Cosmological constant $\Lambda$}
+
+\be
+\boxed{G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}.}
+\ee
+
+
+
+
+
+
+
+\chapter{Introduction to Nonlocal Gravity*}
+
+
+
+
+
+
+
+\part{Appendix}
+\chapter{Notations*}
+\section{Einstein Sum Convention}
+Thanks to Einstein's indolence, we have Einstein notation
+\begin{equation}
+    a^ib_i=\sum^n_{i=1}a^ib_i=a^1b_1+a^2b_2+...+a^nb_n.
+\end{equation}
+
+Upper indices represent components of contravariant vectors (vectors), lower indices represent components of covariant vectors (covectors).\\
+
+In GR cases, $i=1,2,3,4$. 
+\begin{equation}
+    a^ib_i=a^i\eta_{ij}b^j=a^1b^1-a^2b^2-a^3b^3-a^4b^4,
+\end{equation}
+when we are in Minkovsky Spacetime, for example.
+
+\section{Ricci caculus}\label{riccaculus}
+Parentheses $(\ )$ denote the symmetry of a tensor with respect to those indices, for example
+\be
+T_{(\alpha \beta \gamma \ldots)}=\frac{1}{n !} \sum_{p \in \text { permutations }} T_{p(\alpha \beta \gamma \dots)}.
+\ee
+In contrast, square brackets $[\ ]$ denote the anti-symmetry, 
+\be
+T_{[\alpha \beta \gamma . .]}=\frac{1}{n !} \sum_{p \in \text { permutations }}(-1)^{n_{p}} T_{p(\alpha \beta \gamma \dots)}.
+\ee
+
+\section{Scalar, Vector and Tensor}
+
+\textbf{Scalar:}\\ $\underbrace{\phi'(x')}_{in \ K'}=\underbrace{\phi(x(x'))}_{in \ K}$\\\\
+\textbf{Vector:}\\$A'^\alpha=\frac{\partial x'^\alpha}{\partial x^\beta}A^\beta$  \textbf{(CONTROVARIANT)}.\\
+       \  $B'_\alpha=\frac{\partial x^\beta}{\partial x'^\alpha}B_\beta$   \textbf{(COVARIANT)}.\\\\
+\textbf{Tensors of rank 2}\\
+$F'^{\alpha\beta}=\frac{\partial x'^\alpha}{\partial x^\gamma}\frac{\partial x'^\beta}{\partial x'^\delta}F^{\gamma\delta}$   \textbf{(CONTROVARIANT)}\\
+$G'_{\alpha\beta}=\frac{\partial x^\gamma}{\partial x'^\alpha}\frac{\partial x^\delta}{\partial x'^\beta}G_{\gamma\delta}$    \textbf{(COVARIANT)}\\
+
+Suppose: $x^\mu={\rm f}^\mu(x'^{\mu'})$, $x'^{\mu'}={\rm g}^{\mu'}(x^\mu)$, $x^\mu=x^\mu(x'^{\mu'})$, $x'^{\mu'}=x'^{\mu'}(x^\mu)$.\\
+We define vector transform in the form as:
+\begin{equation}
+    V^\mu=\Lambda^\mu_{\mu'}V'^{\mu'},
+\end{equation}
+where $\Lambda^\mu_{\mu'}=\frac{\partial x^\mu}{\partial x'^{\mu'}}$ (Controvariant). 
+
+The definition can be found in Landau and Wiki\footnote{\url{https://en.wikipedia.org/wiki/Covariance_and_contravariance_of_vectors}}.
+
+
+\section{Dual Space}
+The space $(E,g_{\mu\nu},\vec{e_\mu})$ has a dual space $(E*,g^{\mu\nu},\vec{e^\mu})$.
+\defn{$g_{\mu\lambda}g^{\lambda\nu}=\delta^\nu_\mu$}\\
+Then we have $g^{\mu\nu}\vec{e_\nu}=\vec{e^\mu}$.
+From the definition we can get:
+\begin{equation}
+    \vec{e^\mu}\cdot\vec{e_\nu}=\delta^\mu_\nu
+\end{equation}
+So that we can calculate that:
+\begin{equation}
+    \begin{aligned}
+    \vec{e^\mu}\cdot\vec{e^\nu}&=g^{\mu\alpha}\vec{e_\alpha}\cdot g^{\nu\beta}\vec{e_\beta}\\
+    &=g^{\mu\alpha}g^{\nu\beta}g_{\alpha\beta}\\
+    &=g^{\mu\alpha}\cdot\delta^\nu_\alpha\\
+    &=g^\mu_\nu
+    \end{aligned}
+\end{equation}
+
+\section{Covariant and Controvariant}
+Assume there is a function $\phi$ from manifold $M$ to manifold $N$.
+
+
+\chapter{Differential Geometry*}
+This chapter is written with the help of the slides of Differential Geometry class held in SUSTech by Professor Yidun Wan. It can help you to understand more about the basis of General Relativity and help you to be familiar with those notation which you have to handle within the calculation. Some results may overlap with those in previous text, then you can regard them as a review.
+
+\section{Topological Space}
+Topology is Preliminaries of Differential Geometry. Topological space is something having a 'shape' of the same kind.
+\defn{The Topological Space is a pair $(X,\mathcal{T})$, where $X$ is a set and $\mathcal{T}=\left\{U_i|i \in I \right\}$ denotes a collection of subsets of $X$ ($I$ is a index set), with the following properties:
+\begin{itemize}
+    \item $\varnothing \in \mathcal{T}$ and $X \in \mathcal{T}$;
+    \item If $J$ is a subcollection of $I$, $\bigcup_{j \in J}U_j \in \mathcal{T}$;
+    \item If $K$ is a \textbf{finite} subcollection of $I$, $\bigcap_{k \in K}U_k \in \mathcal{T}$.
+\end{itemize}}
+
+$X$ alone is often called topological space, $\mathcal{T}$ is said to be the topology on $X$.\\
+\defn{Any set $U_i \in \mathcal{T}$ is open.}
+
+\subsection{Some Basic Definition}
+Before we introduce the concept 'connectness' and 'continuity', we have to introduce some basic definition:
+
+\defn{\textbf{Interior}: The interior $A^0$ of a set $A$ is the largest open set in $A$.}\\
+If $A^0=A$, $A$ is open.
+\defn{\textbf{Closed set}: A set $A\subset X$ is closed if $A^c=X\backslash A$ is open, where $A^c=\{x\in X|x\notin X\}$ is the complement of $A$.}\\
+This depends on the topology of $X$.
+\defn{\textbf{Closure}:The closure $\bar{A}$ of $A$ in $X$ is the smallest closed set containing $A$.}
+\defn{\textbf{Boundary}:The boundary $\partial A$ of $A$ in $X$ is $\partial A=\bar{A}\backslash A^0$.}
+\defn{\textbf{Dense}:$A\subset X$ is dense if $\bar{A}=X$.}
+\defn{\textbf{Neighbourhood}: Let $T$ be a topological space, $N(x)$ is a neighbourhood of $x\in X$ if $N(x)$ is a subset of $T$ and contains at least one open subset $U(X)\ni x$ of $T$.}\\
+For example, in $\mathbb{R}$, $[a,b]$ is a neighbourhood of any $x\in(a,b)$.\\
+\textbf{Theorem:} A subset $A\subset X$ is open if and only if $A$ is neighbourhood of every points in it.
+
+
+\subsection{Continuity}
+\defn{A map $f:X\to Y$ between two topological spaces $X$ and $Y$ is continuous if \\
+$\forall$ open set $V$ in $Y$,\\
+$f^{-1}(V)$ is an open set in $X$.}\\\\
+For example,\\
+$X=Y=\mathbb{R}, f(x)=x^2$ is \textbf{continuous}.\\
+$X=\mathbb{R}, Y=\{0,1\}$, 
+$
+f(x)=
+\left\{
+             \begin{array}{lr}
+            1, x\geq0 &\\
+            0, x<0
+             \end{array}
+\right.
+$ is \textbf{discontinuous}.
+
+
+
+
+\subsection{Connectness}
+\defn{A topological space $X$ is \textbf{connected} if it cannot be written as $X=X_1\cup X_2$ with $X_1$, $X_2$ open and $X_1\cap X_2=\varnothing$.}\\
+\defn{A topological space is \textbf{pathwise connected} if any $x,y\in X$, $\exists$ a continuous map $f:[0,1]\to X$.}\\
+For example, $f(0)=x$, $f(1)=y$.\\
+Pathway connected means connected, but connected does not mean pathway connected because of the condition topologist's sine curve as figure shows.
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.9\textwidth]{16.png}
+ \caption{Topologist's Sine Curve}
+\end{figure}
+
+\defn{If $f(0)=f(1)$, $f$ is called a \textbf{loop}. Then, $X$ is \textbf{simply connected} if any loop in $X$ can be continuously shrunk to a point.}
+\\
+\subsection{Homeomorphic}
+In a words, Homeomorphic is a way to define an \textbf{equivalence} between topological spaces.
+\defn{A \textbf{homeomorphism} between two topological spaces $X$ and $Y$ is a \textbf{continuous} map $f:X\to Y$ that has a \textbf{continuous} inverse $f^{-1}:Y\to X$.}\\
+We say $X$ is homeomorphic to $Y$, and vise versa.\\
+A homeomorphism is indeed an equivalence relation, because \\
+(1) $X\to id_X\to X$. (reflectivety)\\
+(2) $X\to f\to Y\Rightarrow Y\to f^{-1}\to X$. (symmetry)\\
+(3) $X\to f\to Y, Y\to g\to Z\Rightarrow X\to g\circ f\to Z$. (transitivity)
+
+
+
+\subsection{Homotopy}
+\defn{$X\to f\to Y$, $Y\to g\to X$, $f,g$ both continuous. If
+\begin{equation}
+    \begin{aligned}
+        f\circ g&\sim{\rm{id_Y}}\\
+        g\circ f&\sim{\rm{id_X}},
+    \end{aligned}
+\end{equation}
+it means $X$ is homotopy to $Y$, where $\sim$ is the \textbf{homotopy of maps.}}
+But what is homotopy of maps? 
+\defn{Let $X\to f_0\to Y$, $Y\to f_1\to X$ be continuous maps.\\
+$f_0\sim f_1$ if $\exists$ a continuous family of functions\\
+$X\times I\to F_t\to Y$, $I=[0,1]$. That is $F_0(x)=f_0(x)$, $F_1(x)=f_1(x)$.\\
+The family $F_t$ is called a \textbf{homotopy}.}\\\\
+For example, $X=(0,1)$ is a line, $Y=\{0\}$ is a point, show that $X\sim Y$.\\\\
+\begin{proof}
+
+We can define 
+\begin{equation}
+    \begin{aligned}
+        &f:X\to Y:f(x)=0\\
+        &g:Y\to X:g(0)=\frac{1}{2}.
+    \end{aligned}
+\end{equation}
+It means 
+\begin{equation}
+    \begin{aligned}
+    f\circ g&={\rm{id_Y}},\\
+    g\circ f&=\frac{1}{2}\neq{\rm{id_X}}.
+    \end{aligned}
+\end{equation}
+From $ f\circ g={\rm{id_Y}}$ we can directly get  $f\circ g\sim{\rm{id_Y}}$. As a result, we only need to show $g\circ f\sim{\rm{id_X}}$.\\
+Construct $F_t$ as 
+\begin{equation}
+    F_t=tx+\frac{1-t}{2}.
+\end{equation}
+Clearly 
+\begin{equation}
+    \begin{aligned}
+    F_0&=\frac{1}{2}=g\circ f\\
+    F_1&=x={\rm{id_X}},
+    \end{aligned}
+\end{equation}
+which means $g\circ f\sim {\rm{id_X}}$.\\
+That is $(0,1)\sim \{0\}$.\\
+\end{proof} 
+
+
+
+
+
+
+\section{Differential Manifold}
+We have learnt homeomorphism between two topological spaces, a equivalence relation. In this section we will focus on an equivalence relation between topological spaces that even 
+finer than homeomorphism.\\
+Remember that a homeomorphism is an invertible continuous map between two topological spaces, but what if we demand the map $f$ be not only continuous but also \textbf{smooth} (\textbf{infinitely differentiable})?\\
+However, because topological space is abstract, we can not directly define smoothness. As a result, we need to endow a topological space with \textbf{coordinate}.
+\subsection{Differentiable Manifold and Differentiable Map}
+\defn{An m-dimensional topological space $M$ is a \textbf{differentiable manifold} if $M$ is endowed in a family of pairs $\{(U_i,\phi_i)\}$, that is \\
+(1) $\{U_i\}$ is a family of open set of $M$ and $\bigcup_iU_i=M$;\\
+(2) $\phi_i:U_i\to U_i'\subset\mathbb{R}^m$ is a \textbf{homeomorphism};\\
+(3) For any $U_i$ and $U_i'$, if $U_i\cap U_j\neq\varnothing$, the map \textbf{$\psi_{ij}=\phi_i\circ\phi_j^{-1}:\phi_j(U_i\cap U_j)\to \phi_i(U_i\cap U_j)$ is smooth,} that is infinitely differentiable.}
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.7\textwidth]{17.jpg}
+ \caption{Differentiable Manifold}
+\end{figure}
+
+Note that each $\phi_i$ is represented by a set $\{x^1,x^2,...,x^m\}$ of $m$ functions: \textbf{the coordinate}!\\
+(1) A $U_i$ is called a \textbf{coordinate neighbourhood}.\\
+(2) A pair $(U_i,\phi_i)$ is a \textbf{chart}.\\
+(3) $\{(U_i,\phi_i)\}$ is called an \textbf{atlas}.\\
+\defn{Here are $y(x)=\psi\circ f\circ\phi^{-1}(x)$ or $y^\nu=f^\nu(x^\mu)$. If $y(x)$ is infinitely differentiable, $f$ is said to be \textbf{differentiable} or \textbf{smooth} at P.}
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.7\textwidth]{18.jpg}
+ \caption{Differentiable Map}
+\end{figure}
+The set of all smooth functions over $M$ is denoted by $F(M)$.
+
+\subsection{Tangent Space}
+A generic manifold has no origin, and a straight arrow from origin to a point, as a vector.\\
+In a manifold, one moves along curves. A \textbf{curve} is just a map.
+\begin{equation}
+    \begin{aligned}
+        C&:(a,b)\to M\\
+        &:t\in(a,b)\to c(t)\in M.
+    \end{aligned}
+\end{equation}
+We consider \textbf{Jordan curves}, which do not self intersect.\\
+Then, we study the change rate of change of function $M\to\mathbb{R}$ along a curve $c(t)$ in $M$. 
+\begin{equation}
+    \begin{aligned}
+        \frac{{\rm{d}}f(c(t))}{{\rm{d}}t}|_{t=0}&=\frac{{\rm{d}}}{{\rm{d}}t}[f\circ\phi^{-1}\circ\phi\circ c(t)]|_{t=0}\\
+        &=\frac{{\rm{d}}}{{\rm{d}}t}(f\circ\phi^{-1})(\phi\circ c(t))|_{t=0}.
+    \end{aligned}
+\end{equation}
+Remember the $\circ$ does not mean $\times$, and $f\circ\phi^{-1}\circ\phi\circ c(t)$ actually means $f\circ\phi^{-1}(\phi\circ c(t))$, which is composite function, so that
+\begin{equation}
+    \begin{aligned}
+        \frac{{\rm{d}}f(c(t))}{{\rm{d}}t}|_{t=0}&=\frac{\partial (f\circ\phi^{-1})}{\partial x^\mu}\frac{{\rm{d}}x^\mu(c(t))}{{\rm{d}}t}|_{t=0}\\
+        &=\frac{\partial f}{\partial x^\mu}\frac{{\rm{d}}x^\mu(c(t))}{{\rm{d}}t}|_{t=0}\\
+        &=(X^\mu\frac{\partial}{\partial x^\mu})f\\
+        &=X[f],
+    \end{aligned}
+\end{equation}
+where we firstly change $f\circ\phi^{-1}$ to $f$ in convenience, and define $X^\mu=\frac{{\rm{d}}x^\mu(c(t))}{{\rm{d}}t}|_{t=0}$.\\
+Then we define that $X=X^\mu\frac{\partial}{\partial x^\mu}$ is the \textbf{tagent vector} of $M$ at $P=c(0)$. 
+\defn{All tangent vectors at $p\in M$ from a vector space $T_pM$ is the \textbf{tangent space} at $P$.\\
+(1) The set $\{e_\mu=\frac{\partial}{\partial x^\mu}\}_P$ is a coordinate basis of $T_pM$.\\
+(2) Any vector $V$ in $T_PM$ can be expanded as 
+\begin{equation}
+    V=V^\mu e_\mu=V^\mu\frac{\partial}{\partial x^\mu}.
+\end{equation}\\
+(3) $V$ is independent of the coordinate chosen, because $\phi\circ\phi^{-1}=\phi'\circ\phi'^{-1}$.}\\
+Because of law (3), let $p\in U_i\cap U_j$, $\phi_i=\{x^\mu\},\phi_j=\{y^\mu\}$. Then $V=V^\mu\frac{\partial}{\partial x^\mu}=\tilde{V}^\nu\frac{\partial}{\partial y^\nu}$. Then we can get 
+\begin{equation}
+    \tilde{V}^\nu=V^\nu\frac{\partial y^\nu}{\partial x^\mu}.
+\end{equation}
+(4) $V[f]=V^\mu\frac{\partial f}{\partial x^\mu}$ is the change of $f$ along $V$.
+
+\subsection{Cotangent Space}
+In quantum mechanics we have learnt that $\langle\psi|\psi\rangle$ is a number. $\langle\psi|$ is the dual vector of $|\psi\rangle$, so that dual vector can change vector into a number.\\
+We have calculated the derivative of smooth function 
+\begin{equation}
+    \begin{aligned}
+        {\rm{d}}f(p)&={\rm{d}}[f\circ\phi^{-1}\circ\phi(p)]\\
+        &=\frac{\partial f}{\partial x^\mu}{\rm{d}}x^\mu.
+    \end{aligned}
+\end{equation}
+From that we can see that, ${\rm{d}}f$ is not a number. Actually, ${\rm{d}}f$ is something can be expanded in the basis $\{{\rm{d}}x^\mu\}$. But what is ${\rm{d}}x^\mu$? 
+\defn{
+\begin{equation}
+    \langle{\rm{d}}x^\mu,\frac{\partial}{\partial x^\nu}\rangle=\frac{\partial x^\mu}{\partial x^\nu}=\delta^\mu_\nu.
+\end{equation}
+}
+It means that 
+\begin{equation}
+    \langle\frac{\partial f}{\partial x^\mu}{\rm{d}}x^\mu,V^2\frac{\partial}{\partial x^\nu}\rangle=\frac{\partial f}{\partial x^\mu}V^\nu\delta^\mu_\nu=\frac{\partial f}{\partial x^\mu}V^\mu,
+\end{equation}
+which means that $\langle{\rm{d}}f,V\rangle=V[f]\in\mathbb{R}$ is a number.\\
+\defn{\textbf{Cotangent Space:}\\
+(1) ${\rm{d}}f$ is called 1-form.\\
+(2) All 1-form at $p\in M$ form the \textbf{cotangent space} $T_p^*M$, with a coordinate basis $\{{\rm{d}}x^\mu\}$.\\
+(3) Any 1-form $\omega\in T_p^*M$ is written as $\omega=\omega_\mu{\rm{d}}x^\mu$. \\
+(4) Similarly $\omega$ is \textbf{coordinate independent} by the construction.
+\begin{equation}
+    \begin{aligned}
+        &\omega=\omega_\mu{\rm{d}}x^\mu=\tilde{\omega}_\nu{\rm{d}}y^\nu\\
+        &\Rightarrow\tilde{\omega}_\nu=\omega_\mu\frac{\partial x^\mu}{\partial y^\nu},
+    \end{aligned}
+\end{equation}
+where $\omega$ is called covariant.\\
+(5) $\langle,\rangle:T_p^*M\times T_pM\to\mathbb{R}$ is called inner product 
+\begin{equation}
+\langle\omega,v\rangle=\langle\omega_mu{\rm{d}}x^\mu,v^\nu\frac{\partial}{\partial x^\nu}\rangle=\omega_\mu v^\nu\delta^\mu_\nu=\omega_\mu v^\mu.
+\end{equation}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Riemann Geometry}
+We know that the manifold is equipped with certain geometry defined by metric.\\
+Among all the metrics that can be defined on a manifold, there is a special type called (pseudo) Riemannian metrics, which of particular interest because they describe the spacetime governed by Einstein gravity. 
+\subsection{(Pseudo) Riemannian Manifold}
+\defn{A metric on a manifold is generalization of such inner products and is clearly a $(0,2)$-tensor.
+\begin{equation}
+\begin{aligned}
+    g_P:&T_p^*M\otimes T_PM\to\mathbb{R}\\
+    &U\otimes V\to g(U,V).
+    \end{aligned}
+\end{equation}}
+For example, recall that in $\mathbb{R}^3$, $\vec{u}\cdot\vec{v}=u^1v^1+u^2v^2+u^3v^3$, it can be represented by 
+\begin{equation}
+    \left(
+    \begin{array}{ccc}
+    u^1&u^2&u^3
+    \end{array}
+    \right)
+        \left(
+    \begin{array}{ccc}
+    1&0&0\\
+    0&1&0\\
+    0&0&1
+    \end{array}
+    \right)
+        \left(
+    \begin{array}{ccc}
+    v^1\\
+    v^2\\
+    v^3
+    \end{array}
+    \right),
+\end{equation}
+where $   \left(
+    \begin{array}{ccc}
+    1&0&0\\
+    0&1&0\\
+    0&0&1
+    \end{array}
+    \right)$ is metric $g$,
+    \begin{equation}
+        g(\vec{U},\vec{V})=g_{ij}U^iV^j\in\mathbb{R}.
+    \end{equation}
+    \defn{A \textbf{Riemann metric} on M is a $(0,2)$-tensor $g\in\mathscr{J}^0_2(M)$ that satisfies the axioms:\\
+    (1) $g_P(U,V)=g_P(V,U)$ (\textbf{symmetric})\\
+    (2) $g_P(U,V)\geq0$ and $=0$ only if $u=0$, for all $p\in M$. (\textbf{positive definite}).\\
+    The pair $(M,g)$ is called a \textbf{Riemannian manifold}.}\\
+    \defn{A \textbf{pseudo Remannian} metric on $M$ is a $(0,2)$-tensor $g\in\mathscr{J}^0_2(M)$ that satisfies the axioms:\\
+    (1) symmetric\\
+    (2) If $g_P(U,V)=0\forall U\in T_PM$,then $V=0$.\\
+    The pair $(M,g)$ is called \textbf{pseudo-Riemannian} manifold.}\\
+    We know that $g_P(U, ):T_PM\to\mathbb{R}$, which means $g_P(U, )=\omega_\mu\in T_PM$.\\
+    In a coordinate chart $(U,\phi)$ with coordinate $\{x^\mu\}$ 
+    \begin{equation}
+        \begin{aligned}
+          &g_P=g_{\mu\nu}(p){\rm{d}}x^\mu\otimes{\rm{d}}x^\nu\\
+          &\Rightarrow g_P(\frac{\partial}{\partial x^\mu},\frac{\partial}{\partial x^\nu})=g_{\mu\nu}=g_{\nu\mu}.
+        \end{aligned}
+    \end{equation}
+    where $g_{\mu\nu}$ can be seen as amplitude and ${\rm{d}}x^\mu\otimes{\rm{d}}x^\nu$ can be seen as direction in cotangent space.\\
+    $g_{\mu\nu}$ can be taken as inevitable matrix with inverse matrix $g^{\alpha\beta}$. That is 
+    \begin{equation}
+        \begin{aligned}
+          &g_{\mu\nu}g^{\nu\rho}=\delta^\rho_\mu\\
+          &g^{\alpha\beta}=g_{\mu\nu}g^{\mu\alpha}g^{\nu\beta}.
+        \end{aligned}
+    \end{equation}
+    That is, $g_{\mu\nu}$ and $g^{\mu\nu}$ can be used to \textbf{raise} and \textbf{lower} the tensor indices!\\
+    An infinitesimal displacement vector is ${\rm{d}}x^\mu\frac{\partial}{\partial x^\mu}$.
+\begin{equation}
+    \begin{aligned}
+        {\rm{d}}s^2&=g({\rm{d}}x^\mu\frac{\partial}{\partial x^\mu},{\rm{d}}x^\nu\frac{\partial}{{\rm{d}}x^\nu})\\
+        &={\rm{d}}x^\mu{\rm{d}}x^\nu g(\frac{\partial}{\partial x^\mu},\frac{\partial}{\partial x^\nu})\\
+        &=g_{\mu\nu}{\rm{d}}x^\mu{\rm{d}}x^\nu.
+    \end{aligned}
+\end{equation}
+Often, ${\rm{d}}s^2$ is a metric! The infinitesimal length is $\sqrt{{\rm{d}}s^2}=\sqrt{g_{\mu\nu}{\rm{d}}x^\mu{\rm{d}}x^\nu}$ from Riemann metric.
+
+
+
+
+\subsection{Covariant Derivative, Parellel Transport and Geodesic}
+In Euclidean space, consider a vector field $V(x)$ at two nearby points $x$ and $x'=x+\delta x$.
+\begin{equation}
+    V^\nu(x')=V^\nu(x)+\partial_\mu V^\nu(x)\delta x^\mu+....,
+\end{equation}
+where $\partial_\mu V^\nu(x)$ is a tensor and $\delta x^\mu$ is a vector.\\
+However, in curve space, a vector field $W(x)$ in the same condition 
+\begin{equation}
+    W^\nu(x')\neq W^\nu(x)+\partial_\mu W^\nu(x)\delta x^\mu+....,
+\end{equation}
+where $\partial_\mu W^\nu(x)$ is not a tensor. As a result, we should build a nontrivial way to "parallely" transport $W(x)$ to $\tilde{W}(x)$, that is 
+\begin{equation}
+    \tilde{W}^\mu(x')-W^\mu(x)\propto\delta x^\mu.
+\end{equation}
+Also 
+\begin{equation}
+    \widetilde{W_1+W_2}(x')=\tilde{W_1}(x')+\tilde{W_2}(x').
+\end{equation}
+To satisfy these two relationship, we can set 
+\begin{equation}
+    \tilde{W}^\mu(x')=W^\mu(x)-W^\nu\Gamma^\mu_{\nu\rho}(x)\delta x^\rho.
+\end{equation}
+Then our target is finding what $\Gamma^\mu_{\nu\rho}$ is. Now because $\tilde{W}(x')$ and $\tilde{W}(x')$ are at $x'$, we can compare them. Suppose that $W(x)=W^\mu e_\mu$, 
+\begin{equation}
+    \begin{aligned}
+        &\lim_{\delta x\to0}\frac{W(x')-\tilde{W}(x')}{\delta x^\sigma}\\
+        &\lim_{\delta x\to0}\frac{W^\mu(x)+\partial_\nu W^\nu(x)\delta x^\nu-W^\mu(x)+W^\rho\Gamma^\mu_{\rho\nu}(x)\delta x^\nu}{\delta x^\sigma}e_\mu|_x\\
+        &=(\partial_\sigma W^\mu+\Gamma^\mu_{\rho\sigma} W^\rho)e_\mu|_x\\
+        &=\nabla_\sigma W^\mu e_\mu\\
+        &=\nabla_\sigma W\\
+        &=W^\mu_{;\sigma}e_\mu,
+    \end{aligned}
+\end{equation}
+where $\partial_\sigma W^\mu+\Gamma^\mu_{\rho\sigma}W^\rho=\nabla_\sigma W^\mu$ is definition, which is called covariant derivative.\\
+Here we have covariant derivative of $W$ with respect to any vector field $V$.
+\begin{equation}
+    \nabla_\nu W=V^\sigma\nabla_\sigma W=v^\sigma\nabla_\sigma W^\mu e_\mu,
+\end{equation}
+which means 
+\begin{equation}
+    \nabla_\nu W^\mu=V^\sigma\nabla_\sigma W^\mu=V^\sigma W^\mu_{;\sigma}.
+\end{equation}
+Suppose $V$ is the tangent vector along a curve $x(t)$, that is 
+\begin{equation}
+    V^\mu=\frac{{\rm{d}}x^\mu(t)}{{\rm{d}}t}.
+\end{equation}
+We have the covariant derivative of $W$ along the curve 
+\begin{equation}
+    \begin{aligned}
+    \nabla_\mu W^\mu&=\frac{{\rm{d}}x^\sigma(t)}{{\rm{d}}t}\nabla_\sigma W^\mu\\
+    &=\frac{{\rm{d}}x^\sigma}{{\rm{d}}t}(\partial_\sigma W^\mu+\Gamma^\mu_{\rho\sigma}W^\rho)\\
+    &=\frac{{\rm{d}}W^\mu}{{\rm{d}}t}+\Gamma^\mu_{\rho\sigma}W^\rho\frac{{\rm{d}}x^\sigma}{{\rm{d}}t}.
+    \end{aligned}
+\end{equation}
+If it $=0$, we can say $W^\mu$ is \textbf{parallely transported} along the curve.
+Moreover, if $W$ happens to be the tangent vector along $x(\lambda)$, that is $W^\mu=\frac{{\rm{d}}x^\mu}{{\rm{d}}t}=V^\mu$. Then 
+\begin{equation}
+    \begin{aligned}
+        \nabla_\nu V&=\frac{{\rm{d}}V^\mu}{{\rm{d}}\lambda}+\Gamma^\mu_{\rho\sigma}\frac{{\rm{d}}x^\rho}{{\rm{d}}\lambda}\frac{{\rm{d}}x^\sigma}{{\rm{d}}\lambda}\\
+        &=\frac{{\rm{d}}^2X^\mu}{{\rm{d}}\lambda^2}+\Gamma^\mu_{\rho\sigma}\frac{{\rm{d}}x^\rho}{{\rm{d}}\lambda}\frac{{\rm{d}}x^\sigma}{{\rm{d}}\lambda}.
+    \end{aligned}
+\end{equation}
+If it is $=0$, it is \textbf{geodesic equation}. That is, a geodesic is a curve on which its own tangent vector is parallely transported.
+
+\subsection{Affine Connection}
+Relook the covariant derivative
+\begin{equation}
+    \begin{aligned}
+        \nabla_\mu e_\nu&=\nabla_\mu(\delta^\rho_\nu e_\rho)\\
+        &=(\partial_\mu\delta^\rho_\nu)e_\rho+\Gamma^\sigma_{\mu\rho}\delta^\rho_\nu e_\sigma\\
+        &=\Gamma^\sigma_{\mu\nu}e_\sigma.
+    \end{aligned}
+\end{equation}
+As a result, the covariant derivative $\nabla_X Y$ is more formally understood as a map $\nabla:\Xi(M)\times\Xi(M)\to\Xi(M)$, that is change $(X,Y)\to\nabla_XY$ called the affine connection, satisfying\\
+(1) $\nabla_X(Y+Z)=\nabla_XY+\nabla_XZ$\\
+(2) $\nabla_{(X+Y)}Z=\nabla_XZ+\nabla_YZ$\\
+(3) $\nabla_{(fX)}Y=f\nabla_XY$\\
+(4) $\nabla_X(fY)=X[f]Y+f\nabla_XY$.
+
+\subsection{Metric Connection}
+\defn{An affine connection $\nabla$ is a \textbf{metric connection}, or metric connection if 
+\begin{equation}
+    \nabla_\lambda g_{\mu\nu}=0,
+\end{equation}
+that is 
+\begin{equation}
+    \nabla_\nu(g(X,Y))=0
+\end{equation}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{From Equivalence Principle Directly to General Relativity}
+As we all know, equivalence principle is the most important basis of General Relativity. Actually we can directly get many items of GR using equivalence principle. In this section, we will introduce details of this process. The definition of equivalence principle has been shown in 4.1.2.\\
+\textbf{To sum up, equivalence principle has two implication:\\
+(1) Gravity acts on everything uniformly.\\
+(2) Inertial mass $=$ gravitational mass.}
+
+\subsection{Geodesic Equation From the Equivalence Principle}
+Consider a free particle in the Minkovsky space. We can get
+\begin{equation}
+    \frac{{\rm{d}}^2y}{{\rm{d}}t^2}=0.
+\end{equation}
+Actually, in the condition that there is no outside force acting on the object, the object will move along a straight line. As a result, it describe a straight line in the Minkovsky space (Remember this conclusion!). We describe the coordinate system of this Minkovsky space as $X$.\\
+After that, we introduce a changing of coordinate from $X$ to $Y$: $y=x-\frac{1}{2}at^2$, with which we can get 
+\begin{equation}
+    \frac{{\rm{d}}^2x}{{\rm{d}}t^2}=a
+\end{equation}
+Now we consider image in $Y$, it can be locally consider as Minkovsky space, which means that 
+\begin{equation}
+    {\rm{d}}\tau^2=\eta_{\mu\nu}{\rm{d}}y^\mu{\rm{d}}y^\nu.
+\end{equation}
+Then we consider a locally free particle, from which we can get 
+\begin{equation}
+    \frac{{\rm{d}}^2y}{{\rm{d}}\tau^2}=0
+\end{equation}
+Suppose $y^\mu$ is related to general $x^\mu$ (by coordinate transformation). That is $y^\mu=y^\mu(x)$. Then 
+\begin{equation}
+\frac{{\rm{d}}y^\nu}{{\rm{d}}\tau}=\frac{{\rm{d}}y^\nu}{{\rm{d}}x^\rho}\frac{{\rm{d}}x^\rho}{{\rm{d}}\tau},
+\end{equation}
+which means 
+\begin{equation}
+    \begin{aligned}
+    \frac{{\rm{d}}^2y^\nu}{{\rm{d}}\tau^2}&=\frac{{\rm{d}}y^\nu}{{\rm{d}}x^\rho}\frac{{\rm{d}}^2x^\rho}{{\rm{d}}\tau^2}+\frac{{\rm{d}}^2y^\nu}{{\rm{d}}x^\rho{\rm{d}}x^\sigma}\frac{{\rm{d}}x^\rho}{{\rm{d}}\tau}\frac{{\rm{d}}x^\sigma}{{\rm{d}}\tau}\\
+    &=0.
+    \end{aligned}
+\end{equation}
+Derive the equation, we can get 
+\begin{equation}
+    \frac{{\rm{d}}^2x^\nu}{{\rm{d}}\tau^2}+(\frac{\partial x^\nu}{\partial y^\mu}\frac{\partial^2y^\mu}{\partial x^\rho x^\sigma})\frac{{\rm{d}}x^\rho}{{\rm{d}}\tau}\frac{{\rm{d}}x^\sigma}{{\rm{d}}\tau}=0.
+\end{equation}
+Now, our target is to remove $y$ in the equation, which only appear in the term $(\frac{\partial x^\nu}{\partial y^\mu}\frac{\partial^2y^\mu}{\partial x^\rho x^\sigma})$.\\
+Then we should introduce Equivalence Principle. Because $y^\nu=y^\nu(x)$, we have 
+\begin{equation}
+    \eta_{\mu\nu}{\rm{d}}y^\mu{\rm{d}}y^\nu=g_{\rho\sigma}{\rm{d}}x^\rho{\rm{d}}x^\sigma.
+\end{equation}
+That is 
+\begin{equation}
+    g_{\rho\sigma}=\eta_{\mu\nu}\frac{{\rm{d}}y^\mu}{{\rm{d}}x^{\rho}}\frac{{\rm{d}}y^\nu}{{\rm{d}}x^\sigma},
+\end{equation}
+which means 
+\begin{equation}
+    \partial_\alpha g_{\rho\sigma}=\eta_{\mu\nu}(\frac{{\rm{d}}^2y^\mu}{{\rm{d}}x^\rho{\rm{d}}x^\alpha}\frac{{\rm{d}}y^\nu}{{\rm{d}}x^\sigma}+\frac{{\rm{d}}y^\mu}{{\rm{d}}x^\rho}\frac{{\rm{d}}^2y^\nu}{{\rm{d}}x^\rho{\rm{d}}x^\alpha}).
+\end{equation}
+From that we have 
+\begin{equation}
+    -\partial_\alpha g_{\rho\sigma}+\partial_\rho g_{\sigma\alpha}+\partial_\sigma g_{\alpha\rho}=2\eta_{\mu\nu}\frac{\partial y^\mu}{\partial x^\alpha}\frac{\partial^2y^\nu}{\partial x^\rho\partial x^\sigma}.
+\end{equation}
+Then 
+\begin{equation}
+    \begin{aligned}
+    \eta^{\beta\lambda}\frac{\partial x^\alpha}{\partial y^\beta}( -\partial_\alpha g_{\rho\sigma}+\partial_\rho g_{\sigma\alpha}+\partial_\sigma g_{\alpha\rho})&=2 \delta^\lambda_\nu\frac{\partial y^\mu}{\partial x^\alpha}\frac{\partial^2y^\nu}{\partial x^\rho\partial x^\sigma}\\
+    &=2\frac{\partial^2y^\lambda}{\partial x^\rho\partial x^\sigma}.
+    \end{aligned}
+\end{equation}
+That is 
+\begin{equation}
+    \begin{aligned}
+    \frac{1}{2} \eta^{\beta\lambda}\frac{\partial x^\alpha}{\partial y^\beta}\frac{\partial x^\gamma}{\partial y^\lambda}( -\partial_\alpha g_{\rho\sigma}+\partial_\rho g_{\sigma\alpha}+\partial_\sigma g_{\alpha\rho})&=\frac{1}{2}g^{\alpha\gamma}( -\partial_\alpha g_{\rho\sigma}+\partial_\rho g_{\sigma\alpha}+\partial_\sigma g_{\alpha\rho})\\
+    &=\Gamma^\lambda_{\rho\sigma}\\
+    &=\frac{\partial x^\gamma}{\partial y^\lambda}\frac{\partial^2y^\lambda}{\partial x^\rho\partial x^\sigma},
+    \end{aligned}
+\end{equation}
+which is \textbf{Christoff symbols}!\\
+Take it into the oringinal equation, we can get 
+\begin{equation}
+    \frac{{\rm d}^2x^\nu}{{\rm d}\tau^2}+\Gamma^\nu_{\rho\sigma}\frac{{\rm d}x^\rho}{{\rm d}\tau}\frac{{\rm d}x^\sigma}{{\rm d}\tau}=0,
+\end{equation}
+which is \textbf{geodesic equation}. Remember it is locally a straight line in the $Y$ coordinate.
+
+\subsection{Gravitational Action From Equivalence Principle}
+Using Equivalence Principle and Least Action Principle, we can also get geodesic equation.\\
+We know
+\begin{equation}
+    S_{SR}=-m\int{\sqrt{-\eta_{\mu\nu}{\rm{d}}x^\mu{\rm{d}}x^\nu}}\to S_{GR}=-m\int\sqrt{-g_{\mu\nu}{\rm{d}}x^\mu{\rm{d}}x^\nu}.
+\end{equation}
+The left part means locally flat and the right part is generic metric. Then we deal with action $S_{GR}$, 
+\begin{equation}
+    \begin{aligned}
+        S_{GR}&=-m\int\sqrt{-g_{\mu\nu}{\rm{d}}x^\mu{\rm{d}}x^\nu}\\
+        &=-m\int{\rm{d}}\lambda\sqrt{-g_{\mu\nu}{\rm{d}}x^\mu{\rm{d}}x^\nu}\\
+        &=\int{\rm{d}}\lambda L.
+    \end{aligned}
+\end{equation}
+Then from $\delta S_{GR}=0$, we can get Euler Lagrange equation 
+\begin{equation}
+    \frac{{\rm{d}}}{{\rm{d}}\lambda}(\frac{2}{L}g_{\mu\rho}\frac{{\rm{d}}x^\mu}{{\rm{d}}\lambda})-\frac{1}{L}\partial_\rho g_{\mu\nu}\frac{{\rm{d}}x^\mu}{{\rm{d}}\lambda}\frac{{\rm{d}}x^\nu}{{\rm{d}}\lambda}=0.
+\end{equation}
+By letting $\lambda=\tau$, where $\tau$ is proper time. 
+\begin{equation}
+    \frac{{\rm{d}}}{{\rm{d}}\lambda}(2g_{\mu\nu}\frac{{\rm{d}}x^\mu}{{\rm{d}}\tau}-\partial_\rho g_{\mu\nu})\frac{{\rm{d}}x^\mu}{{\rm{d}}\tau}\frac{{\rm{d}}x^\nu}{{\rm{d}}\tau}=0.
+\end{equation}
+From that equation we can also get 
+\begin{equation}
+    \frac{{\rm{d}}^2x^\gamma}{{\rm{d}}\tau^2}+\frac{1}{2}g^{\rho\gamma}(\partial_\mu g_{\sigma\rho}+\partial_\sigma g_{\mu\rho}-\partial_\rho g_{\mu\sigma})\frac{{\rm{d}}x^\mu}{{\rm{d}}\tau}\frac{{\rm{d}}x^\sigma}{{\rm{d}}\tau}.
+\end{equation}
+It means 
+\begin{equation}
+    \frac{{\rm d}^2x^\nu}{{\rm d}\tau^2}+\Gamma^\nu_{\rho\sigma}\frac{{\rm d}x^\rho}{{\rm d}\tau}\frac{{\rm d}x^\sigma}{{\rm d}\tau}=0,
+\end{equation}
+which is \textbf{geodesic equation}. It gives you a simpler way to calculate Christoffel symbels. 
+
+
+
+
+
+
+
+
+
+\subsection{Newtonian Limit}
+In this section, we will recover the Newtonian physics from Einstein's physics by introducing Newtonian Limit.\\
+First of all, Newtonian Limit is \\
+(1) The particle moves very slowly, as compared with the spead of light.
+\begin{equation}
+    \frac{{\rm{d}}x^0}{{\rm{d}}\tau}\gg\frac{{\rm{d}}x^i}{{\rm{d}}\tau}\Rightarrow\frac{{\rm{d}}x^i}{{\rm{d}}x^0}=v^i\ll1=c.
+\end{equation}
+(2) The gravitational field is weak. That is 
+\begin{equation}
+    g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}+O(h),
+\end{equation}
+where $h_{\mu\nu}$ is very small.\\\\
+(3) The gravitational field is static. (Because Newton don't know $g_{\mu\nu}$ could be vary in time.)
+\begin{equation}
+    \partial_0h_{\mu\nu}=0.
+\end{equation}
+Now we impose these conditions to the geodesic equation:
+\begin{equation}
+    \frac{{\rm{d}}^2X^\mu}{{\rm{d}}\tau^2}+\Gamma^\mu_{\rho\sigma}\frac{{\rm{d}}x^\rho}{{\rm{d}}\tau}\frac{{\rm{d}}x^\sigma}{{\rm{d}}\tau}=0.
+\end{equation}
+Inducing condition (1), we can get
+\begin{equation}
+    \frac{{\rm{d}}^2X^\mu}{{\rm{d}}\tau^2}+\Gamma^\mu_{00}(\frac{{\rm{d}}X^0}{{\rm{d}}\tau})^2\approx0，
+\end{equation}
+because other terms is negligible compared to $\frac{{\rm{d}}X^0}{{\rm{d}}\tau}$.\\
+By inducing condition (2), we can get 
+\begin{equation}
+    \begin{aligned}
+        \Gamma^\mu_{\rho\sigma}&=\frac{1}{2}g^{\mu\nu}(-g_{\rho\sigma,\nu}+g_{\sigma\nu,\rho}+g_{\nu\rho,\sigma})\\
+        &\approx\frac{1}{2}(\eta^{\mu\nu}-h^{\mu\nu})(-h_{\rho\sigma,\nu}+h_{\sigma\nu,\rho}+h_{\nu\rho\sigma})\\
+        &\approx\frac{1}{2}\eta^{\mu\nu}(-h_{\rho\sigma,\nu}+h_{\sigma\nu,\rho}+h_{\nu\rho\sigma}).
+    \end{aligned}
+\end{equation}
+That is 
+\begin{equation}
+    \Gamma^\mu_{00}=\frac{1}{2}\eta^{\mu\nu}(-h_{00,\nu}+h_{0\nu,0}+h_{\nu0,0}),
+\end{equation}
+and from which we can finally get 
+\begin{equation}
+    \Gamma^\mu_{00}=-\frac{1}{2}\eta^{\mu\nu}h_{00,\nu}.
+\end{equation}
+Also, from condition (3), we can get that in particular 
+\begin{equation}
+    \begin{aligned}
+        \Gamma^0_{00}&=-\frac{1}{2}h_{00,0}=0\\
+        \Gamma^i_{00}&=-\frac{1}{2}h_{00,i}.
+    \end{aligned}
+\end{equation}
+Take it into what we get from condition one 
+\begin{equation}
+    \frac{{\rm{d}}^2X^i}{{\rm{d}}\tau^2}=\frac{1}{2}h_{00,i},
+\end{equation}
+where $g_{00}=\eta_{00}+h_{00}=-1+h_{00}$.\\
+Suppose $h_{00}=-2\Phi=\frac{2GM}{r}$, there is
+\begin{equation}
+    \frac{{\rm{d}}^2X^i}{{\rm{d}}\tau^2}=-\partial_i\Phi=-\vec{\nabla}\Phi.
+\end{equation}
+It is \textbf{Newtonian}!\\
+It implies that far from a spherical symmetric mass distribution, the gravitational field must be weak. That is 
+\begin{equation}
+    g_{00}\to-1+\frac{2GM}{r}.
+\end{equation}
+
+
+
+
+
+
+
+\end{document}
